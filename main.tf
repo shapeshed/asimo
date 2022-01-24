@@ -8,6 +8,11 @@ terraform {
   }
 }
 
+provider "aws" {
+  region  = "eu-west-1"
+  profile = "terraform-cloud"
+}
+
 resource "aws_route53_zone" "shapeshed_com" {
   name = "shapeshed.com"
 }
@@ -107,7 +112,7 @@ resource "aws_route53_record" "__8e912589f272071e6beb0f31146b9819_www_shapeshed_
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "_8e912589f272071e6beb0f31146b9819.www.shapeshed.com"
   type    = "CNAME"
-  ttl     = 300
+  ttl     = 3600
   records = [
     "_2d7dea137e60e44fdb30e59e1e809008.xrchbtpdjs.acm-validations.aws.",
   ]
