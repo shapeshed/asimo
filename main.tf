@@ -1,3 +1,13 @@
+terraform {
+  cloud {
+    organization = "shapeshed"
+
+    workspaces {
+      name = "asimo"
+    }
+  }
+}
+
 resource "aws_route53_zone" "shapeshed_com" {
   name = "shapeshed.com"
 }
