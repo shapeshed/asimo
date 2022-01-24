@@ -8,6 +8,11 @@ terraform {
   }
 }
 
+provider "aws" {
+  region  = "eu-west-1"
+  profile = "terraform-cloud"
+}
+
 resource "aws_route53_zone" "shapeshed_com" {
   name = "shapeshed.com"
 }
