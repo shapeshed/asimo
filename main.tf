@@ -22,7 +22,7 @@ resource "aws_route53_record" "shapeshed_com_A" {
   name    = aws_route53_zone.shapeshed_com.name
   type    = "A"
   alias {
-    evaluate_target_health = false 
+    evaluate_target_health = false
     name                   = "dvq61qbuoqa8n.cloudfront.net"
     zone_id                = "Z2FDTNDATAQYW2"
   }
@@ -43,7 +43,7 @@ resource "aws_route53_record" "shapeshed_com_AAAA" {
   name    = aws_route53_zone.shapeshed_com.name
   type    = "AAAA"
   alias {
-    evaluate_target_health = false 
+    evaluate_target_health = false
     name                   = "dvq61qbuoqa8n.cloudfront.net"
     zone_id                = "Z2FDTNDATAQYW2"
   }
