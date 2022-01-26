@@ -21,10 +21,11 @@ resource "aws_route53_record" "shapeshed_com_A" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = aws_route53_zone.shapeshed_com.name
   type    = "A"
-  records = [
-    "173.255.248.188",
-  ]
-  ttl = 3600
+  alias {
+    evaluate_target_health = false
+    name                   = "dvq61qbuoqa8n.cloudfront.net"
+    zone_id                = "Z2FDTNDATAQYW2"
+  }
 }
 
 resource "aws_route53_record" "moxie_shapeshed_com_A" {
@@ -41,10 +42,11 @@ resource "aws_route53_record" "shapeshed_com_AAAA" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = aws_route53_zone.shapeshed_com.name
   type    = "AAAA"
-  records = [
-    "2600:3c01::f03c:91ff:fe93:30f8",
-  ]
-  ttl = 3600
+  alias {
+    evaluate_target_health = false
+    name                   = "dvq61qbuoqa8n.cloudfront.net"
+    zone_id                = "Z2FDTNDATAQYW2"
+  }
 }
 
 resource "aws_route53_record" "moxie_shapeshed_com_AAAA" {
