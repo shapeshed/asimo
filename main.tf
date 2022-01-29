@@ -120,6 +120,16 @@ resource "aws_route53_record" "__8e912589f272071e6beb0f31146b9819_www_shapeshed_
   ]
 }
 
+resource "aws_route53_record" "mail_shapeshed_com_CNAME" {
+  zone_id = aws_route53_zone.shapeshed_com.zone_id
+  name    = "mail.shapeshed.com"
+  type    = "CNAME"
+  ttl     = 86400
+  records = [
+    "moxie.shapeshed.com.",
+  ]
+}
+
 
 resource "aws_route53_record" "shapeshed_com_MX" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
