@@ -38,6 +38,16 @@ resource "aws_route53_record" "moxie_shapeshed_com_A" {
   ttl = 86400
 }
 
+resource "aws_route53_record" "mx01_shapeshed_com_A" {
+  zone_id = aws_route53_zone.shapeshed_com.zone_id
+  name    = "mx01.shapeshed.com"
+  type    = "A"
+  records = [
+    "173.255.248.188",
+  ]
+  ttl = 86400
+}
+
 resource "aws_route53_record" "shapeshed_com_AAAA" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = aws_route53_zone.shapeshed_com.name
@@ -52,6 +62,16 @@ resource "aws_route53_record" "shapeshed_com_AAAA" {
 resource "aws_route53_record" "moxie_shapeshed_com_AAAA" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "moxie.shapeshed.com"
+  type    = "AAAA"
+  records = [
+    "2600:3c01::f03c:91ff:fe93:30f8",
+  ]
+  ttl = 86400
+}
+
+resource "aws_route53_record" "mx01_shapeshed_com_AAAA" {
+  zone_id = aws_route53_zone.shapeshed_com.zone_id
+  name    = "mx01.shapeshed.com"
   type    = "AAAA"
   records = [
     "2600:3c01::f03c:91ff:fe93:30f8",
@@ -130,6 +150,25 @@ resource "aws_route53_record" "mail_shapeshed_com_CNAME" {
   ]
 }
 
+resource "aws_route53_record" "imap_shapeshed_com_CNAME" {
+  zone_id = aws_route53_zone.shapeshed_com.zone_id
+  name    = "imap.shapeshed.com"
+  type    = "CNAME"
+  ttl     = 86400
+  records = [
+    "moxie.shapeshed.com.",
+  ]
+}
+
+resource "aws_route53_record" "smtp_shapeshed_com_CNAME" {
+  zone_id = aws_route53_zone.shapeshed_com.zone_id
+  name    = "smtp.shapeshed.com"
+  type    = "CNAME"
+  ttl     = 86400
+  records = [
+    "moxie.shapeshed.com.",
+  ]
+}
 
 resource "aws_route53_record" "shapeshed_com_MX" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
@@ -137,10 +176,10 @@ resource "aws_route53_record" "shapeshed_com_MX" {
   type    = "MX"
   records = [
     "1 ASPMX.L.GOOGLE.COM",
-    "10 ALT3.ASPMX.L.GOOGLE.COM",
-    "10 ALT4.ASPMX.L.GOOGLE.COM",
     "5 ALT1.ASPMX.L.GOOGLE.COM",
     "5 ALT2.ASPMX.L.GOOGLE.COM",
+    "10 ALT3.ASPMX.L.GOOGLE.COM",
+    "10 ALT4.ASPMX.L.GOOGLE.COM",
   ]
   ttl = 3600
 }
@@ -175,6 +214,7 @@ resource "aws_route53_record" "shapeshed_com_TXT" {
   records = [
     "google-site-verification=VH4lMZXngyYKnvq-OftIaK7k83_HILU9XDozv4WppzU",
     "v=spf1 include:_spf.google.com -all",
+    # "v=spf1 mx a ip4:173.255.248.188 ip6:2600:3c01::f03c:91ff:fe93:30f8 ~all"
   ]
   ttl = 86400
 }
@@ -195,6 +235,19 @@ resource "aws_route53_record" "yandex-verification_shapeshed_com_TXT" {
   type    = "TXT"
   records = [
     "5dc1b233ee950ba7"
+  ]
+  ttl = 86400
+}
+
+resource "aws_route53_record" "moxie__domainkey_shapeshed_com_TXT" {
+  zone_id = aws_route53_zone.shapeshed_com.zone_id
+  name    = "moxie._domainkey.shapeshed.com"
+  type    = "TXT"
+  records = [
+    "v=DKIM1; k=rsa; s=email;",
+    "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4ftJNVp9PkT2Rs8yIoXmOVKvMfmN/SNi7riECgpLGmR/QSseCPTVypv7DF/q83XoEQj6amU2hcVslKN+wN2D6VzlZ7PQXi7jZKrHSvq3T9agj8YWlLf6WmJB7RlEXIn0sWUdSgvUzPly9D/Z9Al2rex8MyD67apF1nIkBvQ18hFRajuhFVZj/hLGBhRb0xRSyrDpmy4lDQkPEn",
+    "g7MLNN0JqQY0bynhvOvg3ZgM2cokykxaCUQNC++P5Szdzs8SM25N+fUj/oYMPZC4gFvgA0Nq0U+frRE1pbSStcmxRgLqO3VPxnTdOjbP7VVvvJ04TDp6IScJYkfNN7ZZYly2CH5QIDAQAB",
+    "5dc1b233ee950ba7",
   ]
   ttl = 86400
 }
