@@ -286,10 +286,7 @@ resource "aws_route53_record" "moxie__domainkey_shapeshed_com_TXT" {
   name    = "moxie._domainkey.shapeshed.com"
   type    = "TXT"
   records = [
-    "v=DKIM1; k=rsa; s=email;",
-    "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4ftJNVp9PkT2Rs8yIoXmOVKvMfmN/SNi7riECgpLGmR/QSseCPTVypv7DF/q83XoEQj6amU2hcVslKN+wN2D6VzlZ7PQXi7jZKrHSvq3T9agj8YWlLf6WmJB7RlEXIn0sWUdSgvUzPly9D/Z9Al2rex8MyD67apF1nIkBvQ18hFRajuhFVZj/hLGBhRb0xRSyrDpmy4lDQkPEn",
-    "g7MLNN0JqQY0bynhvOvg3ZgM2cokykxaCUQNC++P5Szdzs8SM25N+fUj/oYMPZC4gFvgA0Nq0U+frRE1pbSStcmxRgLqO3VPxnTdOjbP7VVvvJ04TDp6IScJYkfNN7ZZYly2CH5QIDAQAB",
-    "5dc1b233ee950ba7",
+    "v=DKIM1; k=rsa; s=email; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4ftJNVp9PkT2Rs8yIoXmOVKvMfmN/SNi7riECgpLGmR/QSseCPTVypv7DF/q83XoEQj6amU2hcVslKN+wN2D6VzlZ7PQXi7jZKrHSvq3T9agj8YWlLf6WmJB7RlEXIn0sWUdSgvUzPly9D/Z9Al2rex8MyD67apF1nIkBvQ18hFRajuhFVZj/hLGBhRb0xRSyrDpmy4lDQkPEn\"\"g7MLNN0JqQY0bynhvOvg3ZgM2cokykxaCUQNC++P5Szdzs8SM25N+fUj/oYMPZC4gFvgA0Nq0U+frRE1pbSStcmxRgLqO3VPxnTdOjbP7VVvvJ04TDp6IScJYkfNN7ZZYly2CH5QIDAQAB\"5dc1b233ee950ba7",
   ]
   ttl = 86400
 }
