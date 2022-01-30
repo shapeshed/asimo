@@ -181,7 +181,7 @@ resource "aws_route53_record" "shapeshed_com_MX" {
     "10 ALT3.ASPMX.L.GOOGLE.COM",
     "10 ALT4.ASPMX.L.GOOGLE.COM",
   ]
-  ttl = 3600
+  ttl = 60
 }
 
 resource "aws_route53_record" "shapeshed_com_NS" {
