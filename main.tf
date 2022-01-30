@@ -91,7 +91,7 @@ resource "aws_route53_record" "moxie_shapeshed_com_AAAA" {
 
 resource "aws_route53_record" "finney_shapeshed_com_AAAA" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
-  name    = "moxie.shapeshed.com"
+  name    = "finney.shapeshed.com"
   type    = "AAAA"
   records = [
     "2600:3c01::f03c:93ff:fe84:fa35",
