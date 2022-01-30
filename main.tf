@@ -38,12 +38,32 @@ resource "aws_route53_record" "moxie_shapeshed_com_A" {
   ttl = 86400
 }
 
+resource "aws_route53_record" "finney_shapeshed_com_A" {
+  zone_id = aws_route53_zone.shapeshed_com.zone_id
+  name    = "finney.shapeshed.com"
+  type    = "A"
+  records = [
+    "45.79.87.169",
+  ]
+  ttl = 86400
+}
+
 resource "aws_route53_record" "mx01_shapeshed_com_A" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "mx01.shapeshed.com"
   type    = "A"
   records = [
     "173.255.248.188",
+  ]
+  ttl = 86400
+}
+
+resource "aws_route53_record" "mx02_shapeshed_com_A" {
+  zone_id = aws_route53_zone.shapeshed_com.zone_id
+  name    = "mx02.shapeshed.com"
+  type    = "A"
+  records = [
+    "45.79.87.169",
   ]
   ttl = 86400
 }
@@ -69,12 +89,32 @@ resource "aws_route53_record" "moxie_shapeshed_com_AAAA" {
   ttl = 86400
 }
 
+resource "aws_route53_record" "finney_shapeshed_com_AAAA" {
+  zone_id = aws_route53_zone.shapeshed_com.zone_id
+  name    = "moxie.shapeshed.com"
+  type    = "AAAA"
+  records = [
+    "2600:3c01::f03c:93ff:fe84:fa35",
+  ]
+  ttl = 86400
+}
+
 resource "aws_route53_record" "mx01_shapeshed_com_AAAA" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "mx01.shapeshed.com"
   type    = "AAAA"
   records = [
     "2600:3c01::f03c:91ff:fe93:30f8",
+  ]
+  ttl = 86400
+}
+
+resource "aws_route53_record" "mx02_shapeshed_com_AAAA" {
+  zone_id = aws_route53_zone.shapeshed_com.zone_id
+  name    = "mx02.shapeshed.com"
+  type    = "AAAA"
+  records = [
+    "2600:3c01::f03c:93ff:fe84:fa35",
   ]
   ttl = 86400
 }
