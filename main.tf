@@ -290,3 +290,14 @@ resource "aws_route53_record" "moxie__domainkey_shapeshed_com_TXT" {
   ]
   ttl = 60
 }
+
+resource "aws_route53_record" "__dmarc_shapeshed_com_TXT" {
+  zone_id = aws_route53_zone.shapeshed_com.zone_id
+  name    = "_dmarc.shapeshed.com"
+  type    = "TXT"
+  records = [
+    "v=DMARC1; p=quarantine; pct=20; adkim=s; aspf=r; fo=1; rua=mailto:postmaster@shapeshed.com; ruf=mailto:forensic@shapeshed.com;"
+  ]
+  ttl = 60
+}
+
