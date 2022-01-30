@@ -215,11 +215,13 @@ resource "aws_route53_record" "shapeshed_com_MX" {
   name    = aws_route53_zone.shapeshed_com.name
   type    = "MX"
   records = [
-    "1 ASPMX.L.GOOGLE.COM",
-    "5 ALT1.ASPMX.L.GOOGLE.COM",
-    "5 ALT2.ASPMX.L.GOOGLE.COM",
-    "10 ALT3.ASPMX.L.GOOGLE.COM",
-    "10 ALT4.ASPMX.L.GOOGLE.COM",
+    "10 mx01.shapeshed.com",
+    "20 mx02.shapeshed.com"
+    # "1 ASPMX.L.GOOGLE.COM",
+    # "5 ALT1.ASPMX.L.GOOGLE.COM",
+    # "5 ALT2.ASPMX.L.GOOGLE.COM",
+    # "10 ALT3.ASPMX.L.GOOGLE.COM",
+    # "10 ALT4.ASPMX.L.GOOGLE.COM",
   ]
   ttl = 60
 }
