@@ -266,7 +266,7 @@ resource "aws_route53_record" "__acme-challenge_shapeshed_com_TXT" {
   name    = "_acme-challenge.shapeshed.com"
   type    = "TXT"
   records = [
-    "9ha6O94uBilOW30HXQb7Q-CnAOufb48Es7yF0GD4KfU"
+    "A-uhrILL2l86Qe3D3ItXlWbWoqTQdjTmN0FgC7w-uuU"
   ]
   ttl = 60
 }
