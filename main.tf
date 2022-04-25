@@ -255,8 +255,8 @@ resource "aws_route53_record" "shapeshed_com_TXT" {
   type    = "TXT"
   records = [
     "google-site-verification=VH4lMZXngyYKnvq-OftIaK7k83_HILU9XDozv4WppzU",
-    # "v=spf1 include:_spf.google.com -all",
-    "v=spf1 mx a ip4:173.255.248.188 ip6:2600:3c01::f03c:91ff:fe93:30f8 ~all"
+    "v=spf1 include:_spf.google.com -all",
+    # "v=spf1 mx a ip4:173.255.248.188 ip6:2600:3c01::f03c:91ff:fe93:30f8 ~all"
   ]
   ttl = 86400
 }
