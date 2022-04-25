@@ -296,7 +296,7 @@ resource "aws_route53_record" "shapeshed__domainkey_shapeshed_com_TXT" {
   name    = "shapeshed._domainkey.shapeshed.com"
   type    = "TXT"
   records = [
-    "v=DKIM1; k=rsa;\"\"p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqlb+nP3HGcfXCWjVpjyMeLG5z5BOdgyGxpH5Vc7VrKu8dfwJyZ/e1gzB7doHe3BsHvOSN+dZrydHBiDFiZ9FMykmFQGv0iaKBqT3etkayXvr43okeJz5//THYIB/4LSJw6uj9KZlpoCjmhl1pZIzuy6+t5xDTGLJIf2lNKe+5NQR+K60/gSpuAymioExG83eug8OwEg/MxXP/qGb4ntJkyV\"\"GStV1MZj2t02imzv5n725bG9Z81cWcEgjcIVV1HBn+ugy/ULyj6fCiZgxW3luBhPNHmNdQbE9NaO/DXsgBIQLhXbcdEL37vcQ1Hb8D0WrlUzFtPlHIDurJCptSywUswIDAQAB",
+    "v=DKIM1; k=rsa;\"\"p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqlb+nP3HGcfXCWjVpjyMeLG5z5BOdgyGxpH5Vc7VrKu8dfwJyZ/e1gzB7doHe3BsHvOSN+dZrydHBiDFiZ9FMykmFQGv0iaKBqT3etkayXvr43okeJz5//\"\"THYIB/4LSJw6uj9KZlpoCjmhl1pZIzuy6+t5xDTGLJIf2lNKe+5NQR+K60/gSpuAymioExG83eug8OwEg/MxXP/qGb4ntJkyV\"\"GStV1MZj2t02imzv5n725bG9Z81cWcEgjcIVV1HBn+ugy/ULyj6fCiZgxW3luBhPNHmNdQbE9NaO/DXsgBIQLhXbcdEL37vcQ1Hb8D0WrlUzFtPlHIDurJCptSywUswIDAQAB",
   ]
   ttl = 60
 }
