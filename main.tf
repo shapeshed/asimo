@@ -15,7 +15,7 @@ terraform {
 
 }
 
-previder "aws" {
+provider "aws" {
   region  = var.aws_region
   profile = "terraform-cloud"
 }
