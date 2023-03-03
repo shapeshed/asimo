@@ -6,9 +6,16 @@ terraform {
       name = "asimo"
     }
   }
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "~> 4.0"
+    }
+  }
+
 }
 
-provider "aws" {
+previder "aws" {
   region  = var.aws_region
   profile = "terraform-cloud"
 }
@@ -310,4 +317,3 @@ resource "aws_route53_record" "__dmarc_shapeshed_com_TXT" {
   ]
   ttl = 60
 }
-
