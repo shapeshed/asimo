@@ -28,7 +28,7 @@ resource "aws_s3_bucket_public_access_block" "creative-corners_public_access_blo
   restrict_public_buckets = true
 }
 
-resource "aws_s3_bucket_server_side_encryption_configuration" "creative-corners_buck  et_encryption" {
+resource "aws_s3_bucket_server_side_encryption_configuration" "creative-corners_bucket_encryption" {
   bucket = aws_s3_bucket.creative-corners.id
   rule {
     apply_server_side_encryption_by_default {
