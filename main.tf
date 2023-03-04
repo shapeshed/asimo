@@ -17,7 +17,7 @@ terraform {
 
 provider "aws" {
   region  = var.aws_region
-  profile = "terraform-cloud"
+  # profile = "terraform-cloud"
 }
 
 resource "aws_route53_zone" "shapeshed_com" {
