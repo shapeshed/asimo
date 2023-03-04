@@ -12,6 +12,7 @@ Asimo is a collection of [Terraform][1] scripts that I use to manage Cloud Infra
 
 `terraform init`
 
+
 [1]: https://www.terraform.io/
 [2]: https://learn.hashicorp.com/tutorials/terraform/install-cli
 [3]: https://aws.amazon.com/cli/
