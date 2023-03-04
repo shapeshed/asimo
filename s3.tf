@@ -16,7 +16,7 @@ resource "aws_s3_bucket_acl" "creative-corners_acl" {
 resource "aws_s3_bucket_versioning" "creative-corners_versioning" {
   bucket = aws_s3_bucket.creative-corners.id
   versioning_configuration {
-    status = "Enabled"
+    status = "Suspended"
   }
 }
 
