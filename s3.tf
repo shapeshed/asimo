@@ -32,7 +32,7 @@ module "s3-static-shapeshed-com" {
     enabled = false
   }
 }
-module "bomberg" {
+module "s3-bomberg" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
   providers = {
