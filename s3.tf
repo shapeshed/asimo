@@ -32,6 +32,23 @@ module "s3-us-east-1" {
   ignore_public_acls      = true
   block_public_policy     = true
   restrict_public_buckets = true
+
+  intelligent_tiering = {
+    general = {
+      status = "Enabled"
+      filter = {
+        prefix = "/"
+      }
+      tiering = {
+        ARCHIVE_ACCESS = {
+          days = 5
+        }
+        DEEP_ARCHIVE_ACCESS = {
+          days = 10
+        }
+      }
+    }
+  }
 }
 module "s3-static-shapeshed-com" {
   source  = "terraform-aws-modules/s3-bucket/aws"
