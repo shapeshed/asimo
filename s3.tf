@@ -53,8 +53,7 @@ module "s3-us-east-1" {
     "clearmatics.shapeshed.com",
     "com.shapeshed.auster",
     "com.shapeshed.orwell",
-    "george-mbp",
-    "www.shapeshed.com"
+    "george-mbp"
   ])
   providers = {
     aws = aws.us-east-1
