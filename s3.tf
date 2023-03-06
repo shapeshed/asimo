@@ -44,7 +44,7 @@ module "s3-us-east-1" {
           days = 90
         }
         DEEP_ARCHIVE_ACCESS = {
-          days = 90
+          days = 180
         }
       }
     }
