@@ -17,7 +17,10 @@ terraform {
 
 provider "aws" {
   region = var.aws_region
-  # profile = "terraform-cloud"
+}
+provider "aws" {
+  region = "us-east-1"
+  alias  = "us-east-1"
 }
 
 resource "aws_route53_zone" "shapeshed_com" {

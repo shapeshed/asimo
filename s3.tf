@@ -32,3 +32,16 @@ module "s3-static-shapeshed-com" {
     enabled = false
   }
 }
+module "s3-bomberg" {
+  source  = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.7.0"
+  providers = {
+    aws = aws.us-east-1
+  }
+  bucket                  = "bomberg"
+  acl                     = "private"
+  block_public_acls       = true
+  ignore_public_acls      = true
+  block_public_policy     = true
+  restrict_public_buckets = true
+}
