@@ -37,15 +37,16 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "creative-corners_
   }
 }
 module "s3-photos-shapeshed-com" {
-  source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-
-  bucket = "photos.shapeshed.com"
-  acl    = "private"
-
+  source                  = "terraform-aws-modules/s3-bucket/aws"
+  version                 = "3.7.0"
+  bucket                  = "photos.shapeshed.com"
+  acl                     = "private"
+  block_public_acls       = true
+  ignore_public_acls      = true
+  block_public_policy     = true
+  restrict_public_buckets = true
   versioning = {
     enabled = false
   }
-
 }
 
