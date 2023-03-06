@@ -46,9 +46,15 @@ module "s3-bomberg" {
   restrict_public_buckets = true
 }
 module "s3-us-east-1" {
-  source   = "terraform-aws-modules/s3-bucket/aws"
-  version  = "3.7.0"
-  for_each = toset(["cdn.shapeshed.com", "clearmatics.shapeshed.com"])
+  source  = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.7.0"
+  for_each = toset([
+    "cdn.shapeshed.com",
+    "clearmatics.shapeshed.com",
+    "com.shapeshed.auster",
+    "com.shapeshed.orwell",
+    "george-mbp"
+  ])
   providers = {
     aws = aws.us-east-1
   }
