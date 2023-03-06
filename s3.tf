@@ -5,9 +5,6 @@ module "s3-eu-west-1" {
     "creative-corners",
     "photos.shapeshed.com"
   ])
-  providers = {
-    aws = aws.eu-west-1
-  }
   bucket                  = each.key
   acl                     = "private"
   block_public_acls       = true
