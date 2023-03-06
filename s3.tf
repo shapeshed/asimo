@@ -45,3 +45,17 @@ module "s3-bomberg" {
   block_public_policy     = true
   restrict_public_buckets = true
 }
+module "s3-us-east-1" {
+  source   = "terraform-aws-modules/s3-bucket/aws"
+  version  = "3.7.0"
+  for_each = toset(["cdn.shapeshed.com", "clearmatics.shapeshed.com"])
+  providers = {
+    aws = aws.us-east-1
+  }
+  bucket                  = each.key
+  acl                     = "private"
+  block_public_acls       = true
+  ignore_public_acls      = true
+  block_public_policy     = true
+  restrict_public_buckets = true
+}
