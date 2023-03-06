@@ -41,10 +41,10 @@ module "s3-us-east-1" {
       }
       tiering = {
         ARCHIVE_ACCESS = {
-          days = 5
+          days = 90
         }
         DEEP_ARCHIVE_ACCESS = {
-          days = 10
+          days = 90
         }
       }
     }
