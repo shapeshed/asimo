@@ -18,7 +18,6 @@ module "s3-us-east-1" {
   for_each = toset([
     "bomberg",
     "cdn.shapeshed.com",
-    "clearmatics.shapeshed.com",
     "com.shapeshed.clearmatics",
     "com.shapeshed.auster",
     "com.shapeshed.orwell",
