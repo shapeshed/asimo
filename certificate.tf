@@ -16,6 +16,7 @@ resource "aws_acm_certificate" "cert-shapeshed-com" {
 }
 
 resource "aws_acm_certificate_validation" "cert-shapeshed-com-validation" {
+  provider                = aws.us-east-1
   certificate_arn         = aws_acm_certificate.cert-shapeshed-com.arn
   validation_record_fqdns = [for record in aws_route53_record.shapeshed_com_acm_validation : record.fqdn]
 }
