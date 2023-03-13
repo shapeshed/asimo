@@ -69,7 +69,7 @@ resource "aws_cloudfront_distribution" "cf-shapeshed-com" {
 }
 
 resource "aws_cloudfront_origin_access_control" "static-shapeshed-com" {
-  name                              = "static.shapeshed.com.s3.eu-west-1.amazonaws.com"
+  name                              = aws_s3_bucket.static-shapeshed-com.bucket_regional_domain_name
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"
