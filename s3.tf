@@ -1,16 +1,3 @@
-module "s3-eu-west-1" {
-  source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-  for_each = toset([
-    "photos.shapeshed.com"
-  ])
-  bucket                  = each.key
-  acl                     = "private"
-  block_public_acls       = true
-  ignore_public_acls      = true
-  block_public_policy     = true
-  restrict_public_buckets = true
-}
 module "s3-us-east-1" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
@@ -80,5 +67,30 @@ resource "aws_s3_bucket_versioning" "creative-corners-bucket_versioning" {
 
 resource "aws_s3_bucket_acl" "creative-corners_acl" {
   bucket = aws_s3_bucket.creative-corners.id
+  acl    = "private"
+}
+
+resource "aws_s3_bucket" "photos-shapeshed-com" {
+  bucket = "photos.shapeshed.com"
+}
+
+resource "aws_s3_bucket_public_access_block" "photos-shapeshed-com" {
+  bucket = aws_s3_bucket.photos-shapeshed-com.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+resource "aws_s3_bucket_versioning" "photos-shapeshed-com" {
+  bucket = aws_s3_bucket.photos-shapeshed-com.id
+  versioning_configuration {
+    status = "Suspended"
+  }
+}
+
+resource "aws_s3_bucket_acl" "photos-shapeshed-com" {
+  bucket = aws_s3_bucket.photos-shapeshed-com.id
   acl    = "private"
 }
