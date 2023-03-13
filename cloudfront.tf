@@ -106,7 +106,7 @@ resource "aws_cloudfront_distribution" "cf-www-shapeshed-com" {
     max_ttl                = 31536000
     min_ttl                = 0
     smooth_streaming       = false
-    target_origin_id       = "S3-www.shapeshed.com"
+    target_origin_id       = aws_s3_bucket.static-shapeshed-com.bucket_regional_domain_name
     trusted_key_groups     = []
     trusted_signers        = []
     viewer_protocol_policy = "allow-all"
@@ -124,24 +124,11 @@ resource "aws_cloudfront_distribution" "cf-www-shapeshed-com" {
   }
 
   origin {
-    connection_attempts = 3
-    connection_timeout  = 10
-    domain_name         = "static.shapeshed.com.s3.eu-west-1.amazonaws.com"
-    origin_id           = "S3-www.shapeshed.com"
-
-    s3_origin_config {
-      origin_access_identity = "origin-access-identity/cloudfront/E2IDSMMHI1IIKQ"
-    }
-  }
-  origin {
-    connection_attempts = 3
-    connection_timeout  = 10
-    domain_name         = "static.shapeshed.com.s3.eu-west-1.amazonaws.com"
-    origin_id           = "static.shapeshed.com.s3.eu-west-1.amazonaws.com"
-
-    s3_origin_config {
-      origin_access_identity = "origin-access-identity/cloudfront/E15EJ0BFVBGSIQ"
-    }
+    connection_attempts      = 3
+    connection_timeout       = 10
+    domain_name              = aws_s3_bucket.static-shapeshed-com.bucket_regional_domain_name
+    origin_access_control_id = aws_cloudfront_origin_access_control.static-shapeshed-com.id
+    origin_id                = aws_s3_bucket.static-shapeshed-com.bucket_regional_domain_name
   }
 
   restrictions {
@@ -152,10 +139,9 @@ resource "aws_cloudfront_distribution" "cf-www-shapeshed-com" {
   }
 
   viewer_certificate {
-    acm_certificate_arn            = "arn:aws:acm:us-east-1:535487841971:certificate/bec48333-b864-4dd5-b546-d69f5331a10c"
+    acm_certificate_arn            = aws_acm_certificate.cert-www-shapeshed-com.arn
     cloudfront_default_certificate = false
     minimum_protocol_version       = "TLSv1"
     ssl_support_method             = "sni-only"
   }
 }
-
