@@ -60,7 +60,7 @@ resource "aws_cloudfront_distribution" "cf-shapeshed-com" {
   }
 
   viewer_certificate {
-    acm_certificate_arn            = "arn:aws:acm:us-east-1:535487841971:certificate/558d6912-425b-4002-8c7f-6a7fe9b9d408"
+    acm_certificate_arn            = aws_acm_certificate.cert-shapeshed-com.arn
     cloudfront_default_certificate = false
     minimum_protocol_version       = "TLSv1.2_2021"
     ssl_support_method             = "sni-only"
