@@ -2,7 +2,6 @@ module "s3-eu-west-1" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
   for_each = toset([
-    "creative-corners",
     "photos.shapeshed.com"
   ])
   bucket                  = each.key
@@ -57,4 +56,29 @@ module "s3-static-shapeshed-com" {
   versioning = {
     enabled = false
   }
+}
+
+resource "aws_s3_bucket" "creative-corners" {
+  bucket = "creative-corners"
+}
+
+resource "aws_s3_bucket_public_access_block" "creative-corners_public_access_block" {
+  bucket = aws_s3_bucket.creative-corners.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+resource "aws_s3_bucket_versioning" "creative-corners-bucket_versioning" {
+  bucket = aws_s3_bucket.creative-corners.id
+  versioning_configuration {
+    status = "Suspended"
+  }
+}
+
+resource "aws_s3_bucket_acl" "creative-corners_acl" {
+  bucket = aws_s3_bucket.creative-corners.id
+  acl    = "private"
 }
