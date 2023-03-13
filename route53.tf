@@ -8,8 +8,8 @@ resource "aws_route53_record" "shapeshed_com_A" {
   type    = "A"
   alias {
     evaluate_target_health = false
-    name                   = "dvq61qbuoqa8n.cloudfront.net"
-    zone_id                = "Z2FDTNDATAQYW2"
+    name                   = aws_cloudfront_distribution.cf-shapeshed-com.domain_name
+    zone_id                = aws_cloudfront_distribution.cf-shapeshed-com.hosted_zone_id
   }
 }
 
@@ -57,44 +57,14 @@ resource "aws_route53_record" "www_shapeshed_com_acm_validation" {
   zone_id         = aws_route53_zone.shapeshed_com.zone_id
 }
 
-resource "aws_route53_record" "finney_shapeshed_com_A" {
-  zone_id = aws_route53_zone.shapeshed_com.zone_id
-  name    = "finney.shapeshed.com"
-  type    = "A"
-  records = [
-    "45.79.87.169",
-  ]
-  ttl = 86400
-}
-
-resource "aws_route53_record" "mx01_shapeshed_com_A" {
-  zone_id = aws_route53_zone.shapeshed_com.zone_id
-  name    = "mx01.shapeshed.com"
-  type    = "A"
-  records = [
-    "173.255.248.188",
-  ]
-  ttl = 86400
-}
-
-resource "aws_route53_record" "mx02_shapeshed_com_A" {
-  zone_id = aws_route53_zone.shapeshed_com.zone_id
-  name    = "mx02.shapeshed.com"
-  type    = "A"
-  records = [
-    "45.79.87.169",
-  ]
-  ttl = 86400
-}
-
 resource "aws_route53_record" "shapeshed_com_AAAA" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = aws_route53_zone.shapeshed_com.name
   type    = "AAAA"
   alias {
     evaluate_target_health = false
-    name                   = "dvq61qbuoqa8n.cloudfront.net"
-    zone_id                = "Z2FDTNDATAQYW2"
+    name                   = aws_cloudfront_distribution.cf-shapeshed-com.domain_name
+    zone_id                = aws_cloudfront_distribution.cf-shapeshed-com.hosted_zone_id
   }
 }
 
@@ -104,36 +74,6 @@ resource "aws_route53_record" "moxie_shapeshed_com_AAAA" {
   type    = "AAAA"
   records = [
     "2600:3c01::f03c:91ff:fe93:30f8",
-  ]
-  ttl = 86400
-}
-
-resource "aws_route53_record" "finney_shapeshed_com_AAAA" {
-  zone_id = aws_route53_zone.shapeshed_com.zone_id
-  name    = "finney.shapeshed.com"
-  type    = "AAAA"
-  records = [
-    "2600:3c01::f03c:93ff:fe84:fa35",
-  ]
-  ttl = 86400
-}
-
-resource "aws_route53_record" "mx01_shapeshed_com_AAAA" {
-  zone_id = aws_route53_zone.shapeshed_com.zone_id
-  name    = "mx01.shapeshed.com"
-  type    = "AAAA"
-  records = [
-    "2600:3c01::f03c:91ff:fe93:30f8",
-  ]
-  ttl = 86400
-}
-
-resource "aws_route53_record" "mx02_shapeshed_com_AAAA" {
-  zone_id = aws_route53_zone.shapeshed_com.zone_id
-  name    = "mx02.shapeshed.com"
-  type    = "AAAA"
-  records = [
-    "2600:3c01::f03c:93ff:fe84:fa35",
   ]
   ttl = 86400
 }
@@ -178,43 +118,11 @@ resource "aws_route53_record" "w6yzyrt6eyqt_shapeshed_com_CNAME" {
   ]
 }
 
-resource "aws_route53_record" "mail_shapeshed_com_CNAME" {
-  zone_id = aws_route53_zone.shapeshed_com.zone_id
-  name    = "mail.shapeshed.com"
-  type    = "CNAME"
-  ttl     = 86400
-  records = [
-    "moxie.shapeshed.com.",
-  ]
-}
-
-resource "aws_route53_record" "imap_shapeshed_com_CNAME" {
-  zone_id = aws_route53_zone.shapeshed_com.zone_id
-  name    = "imap.shapeshed.com"
-  type    = "CNAME"
-  ttl     = 86400
-  records = [
-    "moxie.shapeshed.com.",
-  ]
-}
-
-resource "aws_route53_record" "smtp_shapeshed_com_CNAME" {
-  zone_id = aws_route53_zone.shapeshed_com.zone_id
-  name    = "smtp.shapeshed.com"
-  type    = "CNAME"
-  ttl     = 86400
-  records = [
-    "moxie.shapeshed.com.",
-  ]
-}
-
 resource "aws_route53_record" "shapeshed_com_MX" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = aws_route53_zone.shapeshed_com.name
   type    = "MX"
   records = [
-    #"10 mx01.shapeshed.com",
-    #"20 mx02.shapeshed.com"
     "1 ASPMX.L.GOOGLE.COM",
     "5 ALT1.ASPMX.L.GOOGLE.COM",
     "5 ALT2.ASPMX.L.GOOGLE.COM",
@@ -254,7 +162,6 @@ resource "aws_route53_record" "shapeshed_com_TXT" {
   records = [
     "google-site-verification=VH4lMZXngyYKnvq-OftIaK7k83_HILU9XDozv4WppzU",
     "v=spf1 include:_spf.google.com -all",
-    # "v=spf1 mx a ip4:173.255.248.188 ip6:2600:3c01::f03c:91ff:fe93:30f8 ~all"
   ]
   ttl = 86400
 }
