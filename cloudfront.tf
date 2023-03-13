@@ -23,6 +23,7 @@ resource "aws_cloudfront_distribution" "cf-shapeshed-com" {
       "GET",
       "HEAD",
     ]
+    # AWS Managed Policy
     cache_policy_id = "658327ea-f89d-4fab-a63d-7e88639e58f6"
     cached_methods = [
       "GET",
@@ -33,7 +34,7 @@ resource "aws_cloudfront_distribution" "cf-shapeshed-com" {
     max_ttl                = 0
     min_ttl                = 0
     smooth_streaming       = false
-    target_origin_id       = "static.shapeshed.com.s3.eu-west-1.amazonaws.com"
+    target_origin_id       = aws_s3_bucket.static-shapeshed-com.bucket_regional_domain_name
     trusted_key_groups     = []
     trusted_signers        = []
     viewer_protocol_policy = "redirect-to-https"
@@ -47,9 +48,9 @@ resource "aws_cloudfront_distribution" "cf-shapeshed-com" {
   origin {
     connection_attempts      = 3
     connection_timeout       = 10
-    domain_name              = "static.shapeshed.com.s3.eu-west-1.amazonaws.com"
-    origin_access_control_id = "E1IIZUUZGRNE2J"
-    origin_id                = "static.shapeshed.com.s3.eu-west-1.amazonaws.com"
+    domain_name              = aws_s3_bucket.static-shapeshed-com.bucket_regional_domain_name
+    origin_access_control_id = aws_cloudfront_origin_access_control.static-shapeshed-com.id
+    origin_id                = aws_s3_bucket.static-shapeshed-com.bucket_regional_domain_name
   }
 
   restrictions {
@@ -65,6 +66,13 @@ resource "aws_cloudfront_distribution" "cf-shapeshed-com" {
     minimum_protocol_version       = "TLSv1.2_2021"
     ssl_support_method             = "sni-only"
   }
+}
+
+resource "aws_cloudfront_origin_access_control" "static-shapeshed-com" {
+  name                              = "static.shapeshed.com.s3.eu-west-1.amazonaws.com"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
 }
 
 resource "aws_cloudfront_distribution" "cf-www-shapeshed-com" {
