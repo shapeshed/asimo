@@ -138,17 +138,6 @@ resource "aws_route53_record" "mx02_shapeshed_com_AAAA" {
   ttl = 86400
 }
 
-resource "aws_route53_record" "__26eca8f67eb273a9cafb25ef1989fdf1_shapeshed_com_CNAME" {
-  zone_id = aws_route53_zone.shapeshed_com.zone_id
-  name    = "_26eca8f67eb273a9cafb25ef1989fdf1.shapeshed.com"
-  type    = "CNAME"
-  ttl     = 300
-  records = [
-    "_ac0f44f6b20b6d08d8683d23e8f24bce.xrchbtpdjs.acm-validations.aws.",
-
-  ]
-}
-
 resource "aws_route53_record" "d78e316caf6d1de59613b2e5a7e0d62b_shapeshed_com_CNAME" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "d78e316caf6d1de59613b2e5a7e0d62b.shapeshed.com"
@@ -186,16 +175,6 @@ resource "aws_route53_record" "w6yzyrt6eyqt_shapeshed_com_CNAME" {
   ttl     = 86400
   records = [
     "gv-h46mybslvl2p4v.dv.googlehosted.com.",
-  ]
-}
-
-resource "aws_route53_record" "__8e912589f272071e6beb0f31146b9819_www_shapeshed_com_CNAME" {
-  zone_id = aws_route53_zone.shapeshed_com.zone_id
-  name    = "_8e912589f272071e6beb0f31146b9819.www.shapeshed.com"
-  type    = "CNAME"
-  ttl     = 3600
-  records = [
-    "_2d7dea137e60e44fdb30e59e1e809008.xrchbtpdjs.acm-validations.aws.",
   ]
 }
 
