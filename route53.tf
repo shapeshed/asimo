@@ -219,3 +219,25 @@ resource "aws_route53_record" "samornbo_com_acm_validation" {
   type            = each.value.type
   zone_id         = aws_route53_zone.samornbo-com.zone_id
 }
+
+resource "aws_route53_record" "samornbo-com_A" {
+  zone_id = aws_route53_zone.samornbo-com.zone_id
+  name    = aws_route53_zone.samornbo-com.name
+  type    = "A"
+  alias {
+    evaluate_target_health = false
+    name                   = aws_cloudfront_distribution.samornbo-com.domain_name
+    zone_id                = aws_cloudfront_distribution.samornbo-com.hosted_zone_id
+  }
+}
+
+resource "aws_route53_record" "samornbo-com_AAAA" {
+  zone_id = aws_route53_zone.samornbo-com.zone_id
+  name    = aws_route53_zone.samornbo-com.name
+  type    = "AAAA"
+  alias {
+    evaluate_target_health = false
+    name                   = aws_cloudfront_distribution.samornbo-com.domain_name
+    zone_id                = aws_cloudfront_distribution.samornbo-com.hosted_zone_id
+  }
+}
