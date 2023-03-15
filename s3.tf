@@ -111,3 +111,32 @@ resource "aws_s3_bucket_acl" "static-shapeshed-com" {
   bucket = aws_s3_bucket.static-shapeshed-com.id
   acl    = "private"
 }
+
+resource "aws_s3_bucket" "samornbo-com" {
+  provider = aws.us-east-1
+  bucket   = "samornbo.com"
+}
+
+resource "aws_s3_bucket_public_access_block" "samornbo-com" {
+  provider = aws.us-east-1
+  bucket   = aws_s3_bucket.samornbo-com.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+resource "aws_s3_bucket_versioning" "samornbo-com" {
+  provider = aws.us-east-1
+  bucket   = aws_s3_bucket.samornbo-com.id
+  versioning_configuration {
+    status = "Suspended"
+  }
+}
+
+resource "aws_s3_bucket_acl" "samornbo-com" {
+  provider = aws.us-east-1
+  bucket   = aws_s3_bucket.samornbo-com.id
+  acl      = "private"
+}
