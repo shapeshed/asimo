@@ -1,6 +1,7 @@
 resource "aws_cloudfront_distribution" "cf-shapeshed-com" {
   aliases = [
     "shapeshed.com",
+    "www.shapeshed.com"
   ]
   default_root_object = "index.html"
   enabled             = true
@@ -41,7 +42,7 @@ resource "aws_cloudfront_distribution" "cf-shapeshed-com" {
 
     function_association {
       event_type   = "viewer-request"
-      function_arn = "arn:aws:cloudfront::535487841971:function/index"
+      function_arn = "arn:aws:cloudfront::535487841971:function/naked-domain"
     }
   }
 
@@ -73,75 +74,4 @@ resource "aws_cloudfront_origin_access_control" "static-shapeshed-com" {
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"
-}
-
-resource "aws_cloudfront_distribution" "cf-www-shapeshed-com" {
-  aliases = [
-    "www.shapeshed.com",
-  ]
-  enabled          = true
-  http_version     = "http2"
-  is_ipv6_enabled  = true
-  price_class      = "PriceClass_All"
-  retain_on_delete = false
-  tags = {
-    "site" = "shapeshed.com"
-  }
-  tags_all = {
-    "site" = "shapeshed.com"
-  }
-  wait_for_deployment = true
-
-  default_cache_behavior {
-    allowed_methods = [
-      "GET",
-      "HEAD",
-    ]
-    cached_methods = [
-      "GET",
-      "HEAD",
-    ]
-    compress               = false
-    default_ttl            = 86400
-    max_ttl                = 31536000
-    min_ttl                = 0
-    smooth_streaming       = false
-    target_origin_id       = aws_s3_bucket.static-shapeshed-com.bucket_regional_domain_name
-    trusted_key_groups     = []
-    trusted_signers        = []
-    viewer_protocol_policy = "allow-all"
-
-    forwarded_values {
-      headers                 = []
-      query_string            = false
-      query_string_cache_keys = []
-
-      cookies {
-        forward           = "none"
-        whitelisted_names = []
-      }
-    }
-  }
-
-  origin {
-    connection_attempts      = 3
-    connection_timeout       = 10
-    domain_name              = aws_s3_bucket.static-shapeshed-com.bucket_regional_domain_name
-    origin_access_control_id = aws_cloudfront_origin_access_control.static-shapeshed-com.id
-    origin_id                = aws_s3_bucket.static-shapeshed-com.bucket_regional_domain_name
-  }
-
-  restrictions {
-    geo_restriction {
-      locations        = []
-      restriction_type = "none"
-    }
-  }
-
-  viewer_certificate {
-    acm_certificate_arn            = aws_acm_certificate.cert-www-shapeshed-com.arn
-    cloudfront_default_certificate = false
-    minimum_protocol_version       = "TLSv1"
-    ssl_support_method             = "sni-only"
-  }
 }
