@@ -20,25 +20,3 @@ resource "aws_acm_certificate_validation" "cert-shapeshed-com-validation" {
   certificate_arn         = aws_acm_certificate.cert-shapeshed-com.arn
   validation_record_fqdns = [for record in aws_route53_record.shapeshed_com_acm_validation : record.fqdn]
 }
-
-resource "aws_acm_certificate" "cert-www-shapeshed-com" {
-  provider      = aws.us-east-1
-  domain_name   = "www.shapeshed.com"
-  key_algorithm = "RSA_2048"
-  subject_alternative_names = [
-    "www.shapeshed.com",
-  ]
-  tags              = {}
-  tags_all          = {}
-  validation_method = "DNS"
-
-  options {
-    certificate_transparency_logging_preference = "ENABLED"
-  }
-}
-
-resource "aws_acm_certificate_validation" "cert-www-shapeshed-com-validation" {
-  provider                = aws.us-east-1
-  certificate_arn         = aws_acm_certificate.cert-www-shapeshed-com.arn
-  validation_record_fqdns = [for record in aws_route53_record.www_shapeshed_com_acm_validation : record.fqdn]
-}

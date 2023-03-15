@@ -40,23 +40,6 @@ resource "aws_route53_record" "shapeshed_com_acm_validation" {
   zone_id         = aws_route53_zone.shapeshed_com.zone_id
 }
 
-resource "aws_route53_record" "www_shapeshed_com_acm_validation" {
-  for_each = {
-    for dvo in aws_acm_certificate.cert-www-shapeshed-com.domain_validation_options : dvo.domain_name => {
-      name   = dvo.resource_record_name
-      record = dvo.resource_record_value
-      type   = dvo.resource_record_type
-    }
-  }
-
-  allow_overwrite = true
-  name            = each.value.name
-  records         = [each.value.record]
-  ttl             = 60
-  type            = each.value.type
-  zone_id         = aws_route53_zone.shapeshed_com.zone_id
-}
-
 resource "aws_route53_record" "shapeshed_com_AAAA" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = aws_route53_zone.shapeshed_com.name
