@@ -169,16 +169,6 @@ resource "aws_route53_record" "yandex-verification_shapeshed_com_TXT" {
   ttl = 86400
 }
 
-resource "aws_route53_record" "moxie__domainkey_shapeshed_com_TXT" {
-  zone_id = aws_route53_zone.shapeshed_com.zone_id
-  name    = "moxie._domainkey.shapeshed.com"
-  type    = "TXT"
-  records = [
-    "v=DKIM1; k=rsa; s=email;\"\"p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4ftJNVp9PkT2Rs8yIoXmOVKvMfmN/SNi7riECgpLGmR/QSseCPTVypv7DF/q83XoEQj6amU2hcVslKN+wN2D6VzlZ7PQXi7jZKrHSvq3T9agj8YWlLf6WmJB7RlEXIn0sWUdSgvUzPly9D/Z9Al2rex8MyD67apF1nIkBvQ18hFRajuhFVZj/hLGBhRb0xRSyrDpmy4lDQkPEn\"\"g7MLNN0JqQY0bynhvOvg3ZgM2cokykxaCUQNC++P5Szdzs8SM25N+fUj/oYMPZC4gFvgA0Nq0U+frRE1pbSStcmxRgLqO3VPxnTdOjbP7VVvvJ04TDp6IScJYkfNN7ZZYly2CH5QIDAQAB",
-  ]
-  ttl = 60
-}
-
 resource "aws_route53_record" "shapeshed__domainkey_shapeshed_com_TXT" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "shapeshed._domainkey.shapeshed.com"
@@ -194,7 +184,7 @@ resource "aws_route53_record" "__dmarc_shapeshed_com_TXT" {
   name    = "_dmarc.shapeshed.com"
   type    = "TXT"
   records = [
-    "v=DMARC1; p=quarantine; pct=20; adkim=s; aspf=r; fo=1; rua=mailto:postmaster@shapeshed.com; ruf=mailto:forensic@shapeshed.com;"
+    "v=DMARC1; p=quarantine; rua=mailto:abuse@shapeshed.com; pct=100; adkim=s; aspf=s"
   ]
   ttl = 60
 }
