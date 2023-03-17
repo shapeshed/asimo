@@ -1,5 +1,5 @@
-#tfsec:ignore:aws-cloudfront-enable-waf 
-#tfsec:ignore:aws-cloudfront-enable-logging
+# tfsec:ignore:aws-cloudfront-enable-waf 
+# tfsec:ignore:aws-cloudfront-enable-logging tflint-ignore: terraform_naming_convention
 resource "aws_cloudfront_distribution" "cf-shapeshed-com" {
   aliases = [
     "shapeshed.com",
@@ -71,6 +71,7 @@ resource "aws_cloudfront_distribution" "cf-shapeshed-com" {
   }
 }
 
+# tflint-ignore: terraform_naming_convention
 resource "aws_cloudfront_origin_access_control" "static-shapeshed-com" {
   name                              = aws_s3_bucket.static-shapeshed-com.bucket_regional_domain_name
   origin_access_control_origin_type = "s3"
@@ -78,9 +79,10 @@ resource "aws_cloudfront_origin_access_control" "static-shapeshed-com" {
   signing_protocol                  = "sigv4"
 }
 
-#tfsec:ignore:aws-cloudfront-enable-waf 
-#tfsec:ignore:aws-cloudfront-enable-logging
+# tfsec:ignore:aws-cloudfront-enable-waf 
+# tfsec:ignore:aws-cloudfront-enable-logging tflint-ignore: terraform_naming_convention
 resource "aws_cloudfront_distribution" "samornbo-com" {
+  # tflint-ignore: terraform_naming_convention
   aliases = [
     "samornbo.com",
     "www.samornbo.com"
@@ -157,6 +159,7 @@ resource "aws_cloudfront_distribution" "samornbo-com" {
   }
 }
 
+# tflint-ignore: terraform_naming_convention
 resource "aws_cloudfront_origin_access_control" "samornbo-com" {
   # Bug in Terraform https://github.com/hashicorp/terraform-provider-aws/issues/15102
   # name                              = aws_s3_bucket.samornbo-com.bucket_regional_domain_name
