@@ -1,0 +1,5 @@
+output:
+  file: USAGE.md
+  mode: replace
+  template: |-
+    {{ .Content }}
