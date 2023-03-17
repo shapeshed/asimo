@@ -14,9 +14,7 @@
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_s3-us-east-1"></a> [s3-us-east-1](#module\_s3-us-east-1) | terraform-aws-modules/s3-bucket/aws | 3.7.0 |
+No modules.
 
 ## Resources
 
@@ -78,7 +76,7 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS region | `string` | `"eu-west-1"` | no |
-| <a name="input_us_east_1_buckets"></a> [us\_east\_1\_buckets](#input\_us\_east\_1\_buckets) | Buckets in the us-east-1 region | `list(string)` | <pre>[<br>  "com.shapeshed.bomberg"<br>]</pre> | no |
+| <a name="input_us_east_1_buckets"></a> [us\_east\_1\_buckets](#input\_us\_east\_1\_buckets) | Buckets in the us-east-1 region | `list(string)` | <pre>[<br>  "com.shapeshed.bomberg",<br>  "com.shapeshed.cdn",<br>  "com.shapeshed.clearmatics",<br>  "com.shapeshed.auster",<br>  "com.shapeshed.orwell",<br>  "com.shapeshed.wozniak"<br>]</pre> | no |
 
 ## Outputs
 

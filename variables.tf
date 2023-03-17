@@ -9,10 +9,10 @@ variable "us_east_1_buckets" {
   type        = list(string)
   default = [
     "com.shapeshed.bomberg",
-    #"com.shapeshed.cdn",
-    #"com.shapeshed.clearmatics",
-    #"com.shapeshed.auster",
-    #"com.shapeshed.orwell",
-    #"com.shapeshed.wozniak",
+    "com.shapeshed.cdn",
+    "com.shapeshed.clearmatics",
+    "com.shapeshed.auster",
+    "com.shapeshed.orwell",
+    "com.shapeshed.wozniak",
   ]
 }

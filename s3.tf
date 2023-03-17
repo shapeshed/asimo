@@ -1,48 +1,6 @@
 # tfsec:ignore:aws-s3-enable-bucket-encryption
 # tfsec:ignore:aws-s3-enable-bucket-logging
 # tfsec:ignore:aws-s3-encryption-customer-key
-# tfsec:ignore:aws-s3-enable-versioning tflint-ignore: terraform_naming_convention
-module "s3-us-east-1" {
-  source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-  for_each = toset([
-    "com.shapeshed.cdn",
-    "com.shapeshed.clearmatics",
-    "com.shapeshed.auster",
-    "com.shapeshed.orwell",
-    "com.shapeshed.wozniak",
-  ])
-  providers = {
-    aws = aws.us-east-1
-  }
-  bucket                  = each.key
-  acl                     = "private"
-  block_public_acls       = true
-  ignore_public_acls      = true
-  block_public_policy     = true
-  restrict_public_buckets = true
-
-  intelligent_tiering = {
-    general = {
-      status = "Enabled"
-      filter = {
-        prefix = "/"
-      }
-      tiering = {
-        ARCHIVE_ACCESS = {
-          days = 90
-        }
-        DEEP_ARCHIVE_ACCESS = {
-          days = 180
-        }
-      }
-    }
-  }
-}
-
-# tfsec:ignore:aws-s3-enable-bucket-encryption
-# tfsec:ignore:aws-s3-enable-bucket-logging
-# tfsec:ignore:aws-s3-encryption-customer-key
 resource "aws_s3_bucket" "us_east_1_backups" {
   for_each = toset(var.us_east_1_buckets)
   bucket   = each.key
