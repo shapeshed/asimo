@@ -2,7 +2,6 @@ resource "aws_route53_zone" "shapeshed_com" {
   name = "shapeshed.com"
 }
 
-# tflint-ignore: terraform_naming_convention
 resource "aws_route53_record" "shapeshed_com_A" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = aws_route53_zone.shapeshed_com.name
@@ -14,7 +13,6 @@ resource "aws_route53_record" "shapeshed_com_A" {
   }
 }
 
-# tflint-ignore: terraform_naming_convention
 resource "aws_route53_record" "moxie_shapeshed_com_A" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "moxie.shapeshed.com"
@@ -42,7 +40,6 @@ resource "aws_route53_record" "shapeshed_com_acm_validation" {
   zone_id         = aws_route53_zone.shapeshed_com.zone_id
 }
 
-# tflint-ignore: terraform_naming_convention
 resource "aws_route53_record" "shapeshed_com_AAAA" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = aws_route53_zone.shapeshed_com.name
@@ -54,7 +51,6 @@ resource "aws_route53_record" "shapeshed_com_AAAA" {
   }
 }
 
-# tflint-ignore: terraform_naming_convention
 resource "aws_route53_record" "moxie_shapeshed_com_AAAA" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "moxie.shapeshed.com"
@@ -65,7 +61,6 @@ resource "aws_route53_record" "moxie_shapeshed_com_AAAA" {
   ttl = 86400
 }
 
-# tflint-ignore: terraform_naming_convention
 resource "aws_route53_record" "d78e316caf6d1de59613b2e5a7e0d62b_shapeshed_com_CNAME" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "d78e316caf6d1de59613b2e5a7e0d62b.shapeshed.com"
@@ -76,7 +71,6 @@ resource "aws_route53_record" "d78e316caf6d1de59613b2e5a7e0d62b_shapeshed_com_CN
   ]
 }
 
-# tflint-ignore: terraform_naming_convention
 resource "aws_route53_record" "googlee87068e8125fba47_shapeshed_com_CNAME" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "googlee87068e8125fba47.shapeshed.com"
@@ -87,7 +81,6 @@ resource "aws_route53_record" "googlee87068e8125fba47_shapeshed_com_CNAME" {
   ]
 }
 
-# tflint-ignore: terraform_naming_convention
 resource "aws_route53_record" "shgsbo4u9t_shapeshed_com_CNAME" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "shgsbo4u9t.shapeshed.com"
@@ -98,7 +91,6 @@ resource "aws_route53_record" "shgsbo4u9t_shapeshed_com_CNAME" {
   ]
 }
 
-# tflint-ignore: terraform_naming_convention
 resource "aws_route53_record" "w6yzyrt6eyqt_shapeshed_com_CNAME" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "w6yzyrt6eyqt.shapeshed.com"
@@ -109,7 +101,6 @@ resource "aws_route53_record" "w6yzyrt6eyqt_shapeshed_com_CNAME" {
   ]
 }
 
-# tflint-ignore: terraform_naming_convention
 resource "aws_route53_record" "shapeshed_com_MX" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = aws_route53_zone.shapeshed_com.name
@@ -124,7 +115,6 @@ resource "aws_route53_record" "shapeshed_com_MX" {
   ttl = 60
 }
 
-# tflint-ignore: terraform_naming_convention
 resource "aws_route53_record" "shapeshed_com_NS" {
   name    = aws_route53_zone.shapeshed_com.name
   zone_id = aws_route53_zone.shapeshed_com.zone_id
@@ -138,7 +128,6 @@ resource "aws_route53_record" "shapeshed_com_NS" {
   ttl = 172800
 }
 
-# tflint-ignore: terraform_naming_convention
 resource "aws_route53_record" "shapeshed_com_SOA" {
   name    = aws_route53_zone.shapeshed_com.name
   zone_id = aws_route53_zone.shapeshed_com.zone_id
@@ -149,7 +138,6 @@ resource "aws_route53_record" "shapeshed_com_SOA" {
   ttl = 900
 }
 
-# tflint-ignore: terraform_naming_convention
 resource "aws_route53_record" "shapeshed_com_TXT" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = aws_route53_zone.shapeshed_com.name
@@ -161,7 +149,6 @@ resource "aws_route53_record" "shapeshed_com_TXT" {
   ttl = 86400
 }
 
-# tflint-ignore: terraform_naming_convention
 resource "aws_route53_record" "__acme-challenge_shapeshed_com_TXT" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "_acme-challenge.shapeshed.com"
@@ -172,7 +159,6 @@ resource "aws_route53_record" "__acme-challenge_shapeshed_com_TXT" {
   ttl = 60
 }
 
-# tflint-ignore: terraform_naming_convention
 resource "aws_route53_record" "yandex-verification_shapeshed_com_TXT" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "yandex-verification.shapeshed.com"
@@ -183,7 +169,6 @@ resource "aws_route53_record" "yandex-verification_shapeshed_com_TXT" {
   ttl = 86400
 }
 
-# tflint-ignore: terraform_naming_convention
 resource "aws_route53_record" "shapeshed__domainkey_shapeshed_com_TXT" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "shapeshed._domainkey.shapeshed.com"
@@ -194,7 +179,6 @@ resource "aws_route53_record" "shapeshed__domainkey_shapeshed_com_TXT" {
   ttl = 60
 }
 
-# tflint-ignore: terraform_naming_convention
 resource "aws_route53_record" "__dmarc_shapeshed_com_TXT" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "_dmarc.shapeshed.com"
@@ -226,7 +210,6 @@ resource "aws_route53_record" "samornbo_com_acm_validation" {
   zone_id         = aws_route53_zone.samornbo-com.zone_id
 }
 
-# tflint-ignore: terraform_naming_convention
 resource "aws_route53_record" "samornbo-com_A" {
   zone_id = aws_route53_zone.samornbo-com.zone_id
   name    = aws_route53_zone.samornbo-com.name
@@ -238,7 +221,6 @@ resource "aws_route53_record" "samornbo-com_A" {
   }
 }
 
-# tflint-ignore: terraform_naming_convention
 resource "aws_route53_record" "samornbo-com_AAAA" {
   zone_id = aws_route53_zone.samornbo-com.zone_id
   name    = aws_route53_zone.samornbo-com.name
