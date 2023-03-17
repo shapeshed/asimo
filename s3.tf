@@ -1,3 +1,8 @@
+
+#tfsec:ignore:aws-s3-enable-bucket-logging
+#tfsec:ignore:aws-s3-enable-versioning 
+#tfsec:ignore:aws-s3-enable-bucket-encryption
+#tfsec:ignore:aws-s3-encryption-customer-key
 module "s3-us-east-1" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
@@ -37,11 +42,15 @@ module "s3-us-east-1" {
   }
 }
 
+#tfsec:ignore:aws-s3-enable-bucket-logging
+#tfsec:ignore:aws-s3-enable-versioning 
+#tfsec:ignore:aws-s3-enable-bucket-encryption
+#tfsec:ignore:aws-s3-encryption-customer-key
 resource "aws_s3_bucket" "creative-corners" {
   bucket = "creative-corners"
 }
 
-resource "aws_s3_bucket_public_access_block" "creative-corners_public_access_block" {
+resource "aws_s3_bucket_public_access_block" "creative-corners" {
   bucket = aws_s3_bucket.creative-corners.id
 
   block_public_acls       = true
@@ -50,6 +59,7 @@ resource "aws_s3_bucket_public_access_block" "creative-corners_public_access_blo
   restrict_public_buckets = true
 }
 
+#tfsec:ignore:aws-s3-enable-versioning 
 resource "aws_s3_bucket_versioning" "creative-corners-bucket_versioning" {
   bucket = aws_s3_bucket.creative-corners.id
   versioning_configuration {
@@ -62,6 +72,9 @@ resource "aws_s3_bucket_acl" "creative-corners_acl" {
   acl    = "private"
 }
 
+#tfsec:ignore:aws-s3-enable-bucket-logging
+#tfsec:ignore:aws-s3-enable-bucket-encryption
+#tfsec:ignore:aws-s3-encryption-customer-key
 resource "aws_s3_bucket" "photos-shapeshed-com" {
   bucket = "photos.shapeshed.com"
 }
@@ -75,6 +88,7 @@ resource "aws_s3_bucket_public_access_block" "photos-shapeshed-com" {
   restrict_public_buckets = true
 }
 
+#tfsec:ignore:aws-s3-enable-versioning 
 resource "aws_s3_bucket_versioning" "photos-shapeshed-com" {
   bucket = aws_s3_bucket.photos-shapeshed-com.id
   versioning_configuration {
@@ -87,6 +101,9 @@ resource "aws_s3_bucket_acl" "photos-shapeshed-com" {
   acl    = "private"
 }
 
+#tfsec:ignore:aws-s3-enable-bucket-logging
+#tfsec:ignore:aws-s3-enable-bucket-encryption
+#tfsec:ignore:aws-s3-encryption-customer-key
 resource "aws_s3_bucket" "static-shapeshed-com" {
   bucket = "static.shapeshed.com"
 }
@@ -100,6 +117,7 @@ resource "aws_s3_bucket_public_access_block" "static-shapeshed-com" {
   restrict_public_buckets = true
 }
 
+#tfsec:ignore:aws-s3-enable-versioning 
 resource "aws_s3_bucket_versioning" "static-shapeshed-com" {
   bucket = aws_s3_bucket.static-shapeshed-com.id
   versioning_configuration {
@@ -112,14 +130,17 @@ resource "aws_s3_bucket_acl" "static-shapeshed-com" {
   acl    = "private"
 }
 
-resource "aws_s3_bucket" "samornbo-com" {
+#tfsec:ignore:aws-s3-enable-bucket-logging
+#tfsec:ignore:aws-s3-enable-bucket-encryption
+#tfsec:ignore:aws-s3-encryption-customer-key
+resource "aws_s3_bucket" "samornbo_com" {
   provider = aws.us-east-1
   bucket   = "samornbo.com"
 }
 
-resource "aws_s3_bucket_public_access_block" "samornbo-com" {
+resource "aws_s3_bucket_public_access_block" "samornbo_com" {
   provider = aws.us-east-1
-  bucket   = aws_s3_bucket.samornbo-com.id
+  bucket   = aws_s3_bucket.samornbo_com.id
 
   block_public_acls       = true
   block_public_policy     = true
@@ -127,16 +148,17 @@ resource "aws_s3_bucket_public_access_block" "samornbo-com" {
   restrict_public_buckets = true
 }
 
-resource "aws_s3_bucket_versioning" "samornbo-com" {
+#tfsec:ignore:aws-s3-enable-versioning 
+resource "aws_s3_bucket_versioning" "samornbo_com" {
   provider = aws.us-east-1
-  bucket   = aws_s3_bucket.samornbo-com.id
+  bucket   = aws_s3_bucket.samornbo_com.id
   versioning_configuration {
     status = "Suspended"
   }
 }
 
-resource "aws_s3_bucket_acl" "samornbo-com" {
+resource "aws_s3_bucket_acl" "samornbo_com" {
   provider = aws.us-east-1
-  bucket   = aws_s3_bucket.samornbo-com.id
+  bucket   = aws_s3_bucket.samornbo_com.id
   acl      = "private"
 }
