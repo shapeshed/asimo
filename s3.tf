@@ -64,6 +64,7 @@ resource "aws_s3_bucket_public_access_block" "us_east_1_backups" {
 resource "aws_s3_bucket_versioning" "us_east_1_backups" {
   for_each = aws_s3_bucket.us_east_1_backups
   bucket   = each.value.id
+  provider = aws.us-east-1
 
   versioning_configuration {
     status = "Suspended"
@@ -73,6 +74,7 @@ resource "aws_s3_bucket_versioning" "us_east_1_backups" {
 resource "aws_s3_bucket_acl" "us_east_1_backups" {
   for_each = aws_s3_bucket.us_east_1_backups
   bucket   = each.value.id
+  provider = aws.us-east-1
 
   acl = "private"
 }
