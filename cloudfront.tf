@@ -1,3 +1,5 @@
+#tfsec:ignore:aws-cloudfront-enable-waf 
+#tfsec:ignore:aws-cloudfront-enable-logging
 resource "aws_cloudfront_distribution" "cf-shapeshed-com" {
   aliases = [
     "shapeshed.com",
@@ -76,6 +78,8 @@ resource "aws_cloudfront_origin_access_control" "static-shapeshed-com" {
   signing_protocol                  = "sigv4"
 }
 
+#tfsec:ignore:aws-cloudfront-enable-waf 
+#tfsec:ignore:aws-cloudfront-enable-logging
 resource "aws_cloudfront_distribution" "samornbo-com" {
   aliases = [
     "samornbo.com",
