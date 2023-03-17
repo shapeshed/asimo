@@ -1,6 +1,8 @@
 # Asimo
 
+[![terraform](https://github.com/shapeshed/asimo/actions/workflows/terraform.yml/badge.svg)](https://github.com/shapeshed/asimo/actions/workflows/terraform.yml)
 [![tfsec](https://github.com/shapeshed/asimo/actions/workflows/tfsec.yml/badge.svg)](https://github.com/shapeshed/asimo/actions/workflows/tfsec.yml)
+[![tflint](https://github.com/shapeshed/asimo/actions/workflows/tflint.yml/badge.svg)](https://github.com/shapeshed/asimo/actions/workflows/tflint.yml)
 
 Asimo is a collection of [Terraform][1] scripts that I use to manage Cloud Infrastructure.
 

@@ -1,7 +1,7 @@
-#tfsec:ignore:aws-s3-enable-bucket-encryption
-#tfsec:ignore:aws-s3-enable-bucket-logging
-#tfsec:ignore:aws-s3-encryption-customer-key
-#tfsec:ignore:aws-s3-enable-versioning
+# tfsec:ignore:aws-s3-enable-bucket-encryption
+# tfsec:ignore:aws-s3-enable-bucket-logging
+# tfsec:ignore:aws-s3-encryption-customer-key
+# tfsec:ignore:aws-s3-enable-versioning tflint-ignore: terraform_naming_convention
 module "s3-us-east-1" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
@@ -41,13 +41,14 @@ module "s3-us-east-1" {
   }
 }
 
-#tfsec:ignore:aws-s3-enable-bucket-encryption
-#tfsec:ignore:aws-s3-enable-bucket-logging
-#tfsec:ignore:aws-s3-encryption-customer-key
+# tfsec:ignore:aws-s3-enable-bucket-encryption
+# tfsec:ignore:aws-s3-enable-bucket-logging
+# tfsec:ignore:aws-s3-encryption-customer-key tflint-ignore: terraform_naming_convention
 resource "aws_s3_bucket" "creative-corners" {
   bucket = "creative-corners"
 }
 
+# tflint-ignore: terraform_naming_convention
 resource "aws_s3_bucket_public_access_block" "creative-corners_public_access_block" {
   bucket = aws_s3_bucket.creative-corners.id
 
@@ -57,7 +58,7 @@ resource "aws_s3_bucket_public_access_block" "creative-corners_public_access_blo
   restrict_public_buckets = true
 }
 
-#tfsec:ignore:aws-s3-enable-versioning
+# tfsec:ignore:aws-s3-enable-versioning tflint-ignore: terraform_naming_convention
 resource "aws_s3_bucket_versioning" "creative-corners-bucket_versioning" {
   bucket = aws_s3_bucket.creative-corners.id
   versioning_configuration {
@@ -65,18 +66,20 @@ resource "aws_s3_bucket_versioning" "creative-corners-bucket_versioning" {
   }
 }
 
+# tflint-ignore: terraform_naming_convention
 resource "aws_s3_bucket_acl" "creative-corners_acl" {
   bucket = aws_s3_bucket.creative-corners.id
   acl    = "private"
 }
 
-#tfsec:ignore:aws-s3-enable-bucket-encryption
-#tfsec:ignore:aws-s3-enable-bucket-logging
-#tfsec:ignore:aws-s3-encryption-customer-key
+# tfsec:ignore:aws-s3-enable-bucket-encryption
+# tfsec:ignore:aws-s3-enable-bucket-logging
+# tfsec:ignore:aws-s3-encryption-customer-key tflint-ignore: terraform_naming_convention
 resource "aws_s3_bucket" "photos-shapeshed-com" {
   bucket = "photos.shapeshed.com"
 }
 
+# tflint-ignore: terraform_naming_convention
 resource "aws_s3_bucket_public_access_block" "photos-shapeshed-com" {
   bucket = aws_s3_bucket.photos-shapeshed-com.id
 
@@ -86,7 +89,7 @@ resource "aws_s3_bucket_public_access_block" "photos-shapeshed-com" {
   restrict_public_buckets = true
 }
 
-#tfsec:ignore:aws-s3-enable-versioning
+# tfsec:ignore:aws-s3-enable-versioning tflint-ignore: terraform_naming_convention
 resource "aws_s3_bucket_versioning" "photos-shapeshed-com" {
   bucket = aws_s3_bucket.photos-shapeshed-com.id
   versioning_configuration {
@@ -94,18 +97,20 @@ resource "aws_s3_bucket_versioning" "photos-shapeshed-com" {
   }
 }
 
+# tflint-ignore: terraform_naming_convention
 resource "aws_s3_bucket_acl" "photos-shapeshed-com" {
   bucket = aws_s3_bucket.photos-shapeshed-com.id
   acl    = "private"
 }
 
-#tfsec:ignore:aws-s3-enable-bucket-encryption
-#tfsec:ignore:aws-s3-enable-bucket-logging
-#tfsec:ignore:aws-s3-encryption-customer-key
+# tfsec:ignore:aws-s3-enable-bucket-encryption
+# tfsec:ignore:aws-s3-enable-bucket-logging
+# tfsec:ignore:aws-s3-encryption-customer-key tflint-ignore: terraform_naming_convention
 resource "aws_s3_bucket" "static-shapeshed-com" {
   bucket = "static.shapeshed.com"
 }
 
+# tflint-ignore: terraform_naming_convention
 resource "aws_s3_bucket_public_access_block" "static-shapeshed-com" {
   bucket = aws_s3_bucket.static-shapeshed-com.id
 
@@ -115,7 +120,7 @@ resource "aws_s3_bucket_public_access_block" "static-shapeshed-com" {
   restrict_public_buckets = true
 }
 
-#tfsec:ignore:aws-s3-enable-versioning
+# tfsec:ignore:aws-s3-enable-versioning tflint-ignore: terraform_naming_convention
 resource "aws_s3_bucket_versioning" "static-shapeshed-com" {
   bucket = aws_s3_bucket.static-shapeshed-com.id
   versioning_configuration {
@@ -123,19 +128,21 @@ resource "aws_s3_bucket_versioning" "static-shapeshed-com" {
   }
 }
 
+# tflint-ignore: terraform_naming_convention
 resource "aws_s3_bucket_acl" "static-shapeshed-com" {
   bucket = aws_s3_bucket.static-shapeshed-com.id
   acl    = "private"
 }
 
-#tfsec:ignore:aws-s3-enable-bucket-encryption
-#tfsec:ignore:aws-s3-enable-bucket-logging
-#tfsec:ignore:aws-s3-encryption-customer-key
+# tfsec:ignore:aws-s3-enable-bucket-encryption
+# tfsec:ignore:aws-s3-enable-bucket-logging
+# tfsec:ignore:aws-s3-encryption-customer-key tflint-ignore: terraform_naming_convention
 resource "aws_s3_bucket" "samornbo-com" {
   provider = aws.us-east-1
   bucket   = "samornbo.com"
 }
 
+# tflint-ignore: terraform_naming_convention
 resource "aws_s3_bucket_public_access_block" "samornbo-com" {
   provider = aws.us-east-1
   bucket   = aws_s3_bucket.samornbo-com.id
@@ -146,7 +153,7 @@ resource "aws_s3_bucket_public_access_block" "samornbo-com" {
   restrict_public_buckets = true
 }
 
-#tfsec:ignore:aws-s3-enable-versioning
+# tfsec:ignore:aws-s3-enable-versioning tflint-ignore: terraform_naming_convention
 resource "aws_s3_bucket_versioning" "samornbo-com" {
   provider = aws.us-east-1
   bucket   = aws_s3_bucket.samornbo-com.id
@@ -155,6 +162,7 @@ resource "aws_s3_bucket_versioning" "samornbo-com" {
   }
 }
 
+# tflint-ignore: terraform_naming_convention
 resource "aws_s3_bucket_acl" "samornbo-com" {
   provider = aws.us-east-1
   bucket   = aws_s3_bucket.samornbo-com.id
