@@ -6,7 +6,6 @@ module "s3-us-east-1" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
   for_each = toset([
-    "com.shapeshed.bomberg",
     "com.shapeshed.cdn",
     "com.shapeshed.clearmatics",
     "com.shapeshed.auster",
@@ -39,6 +38,43 @@ module "s3-us-east-1" {
       }
     }
   }
+}
+
+# tfsec:ignore:aws-s3-enable-bucket-encryption
+# tfsec:ignore:aws-s3-enable-bucket-logging
+# tfsec:ignore:aws-s3-encryption-customer-key
+resource "aws_s3_bucket" "us_east_1_backups" {
+  for_each = toset(var.us_east_1_buckets)
+  bucket   = each.key
+  provider = aws.us-east-1
+}
+
+resource "aws_s3_bucket_public_access_block" "us_east_1_backups" {
+  for_each = aws_s3_bucket.us_east_1_backups
+  bucket   = each.value.id
+  provider = aws.us-east-1
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+# tfsec:ignore:aws-s3-enable-versioning
+resource "aws_s3_bucket_versioning" "us_east_1_backups" {
+  for_each = aws_s3_bucket.us_east_1_backups
+  bucket   = each.value.id
+
+  versioning_configuration {
+    status = "Suspended"
+  }
+}
+
+resource "aws_s3_bucket_acl" "us_east_1_backups" {
+  for_each = aws_s3_bucket.us_east_1_backups
+  bucket   = each.value.id
+
+  acl = "private"
 }
 
 # tfsec:ignore:aws-s3-enable-bucket-encryption
