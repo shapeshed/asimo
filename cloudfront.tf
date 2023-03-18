@@ -1,6 +1,6 @@
 # tfsec:ignore:aws-cloudfront-enable-waf 
-# tfsec:ignore:aws-cloudfront-enable-logging tflint-ignore: terraform_naming_convention
-resource "aws_cloudfront_distribution" "cf-shapeshed-com" {
+# tfsec:ignore:aws-cloudfront-enable-logging 
+resource "aws_cloudfront_distribution" "shapeshed_com" {
   aliases = [
     "shapeshed.com",
     "www.shapeshed.com"
@@ -52,7 +52,7 @@ resource "aws_cloudfront_distribution" "cf-shapeshed-com" {
     connection_attempts      = 3
     connection_timeout       = 10
     domain_name              = aws_s3_bucket.static-shapeshed-com.bucket_regional_domain_name
-    origin_access_control_id = aws_cloudfront_origin_access_control.static-shapeshed-com.id
+    origin_access_control_id = aws_cloudfront_origin_access_control.static_shapeshed_com.id
     origin_id                = aws_s3_bucket.static-shapeshed-com.bucket_regional_domain_name
   }
 
@@ -71,8 +71,7 @@ resource "aws_cloudfront_distribution" "cf-shapeshed-com" {
   }
 }
 
-# tflint-ignore: terraform_naming_convention
-resource "aws_cloudfront_origin_access_control" "static-shapeshed-com" {
+resource "aws_cloudfront_origin_access_control" "static_shapeshed_com" {
   name                              = aws_s3_bucket.static-shapeshed-com.bucket_regional_domain_name
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
@@ -80,9 +79,8 @@ resource "aws_cloudfront_origin_access_control" "static-shapeshed-com" {
 }
 
 # tfsec:ignore:aws-cloudfront-enable-waf 
-# tfsec:ignore:aws-cloudfront-enable-logging tflint-ignore: terraform_naming_convention
-resource "aws_cloudfront_distribution" "samornbo-com" {
-  # tflint-ignore: terraform_naming_convention
+# tfsec:ignore:aws-cloudfront-enable-logging 
+resource "aws_cloudfront_distribution" "samornbo_com" {
   aliases = [
     "samornbo.com",
     "www.samornbo.com"
@@ -138,7 +136,7 @@ resource "aws_cloudfront_distribution" "samornbo-com" {
     # Bug in Terraform https://github.com/hashicorp/terraform-provider-aws/issues/15102
     # domain_name              = aws_s3_bucket.samornbo-com.bucket_regional_domain_name
     domain_name              = "samornbo.com.s3.us-east-1.amazonaws.com"
-    origin_access_control_id = aws_cloudfront_origin_access_control.samornbo-com.id
+    origin_access_control_id = aws_cloudfront_origin_access_control.samornbo_com.id
     # Bug in Terraform https://github.com/hashicorp/terraform-provider-aws/issues/15102
     # origin_id                = aws_s3_bucket.samornbo-com.bucket_regional_domain_name
     origin_id = "samornbo.com.s3.us-east-1.amazonaws.com"
@@ -159,8 +157,7 @@ resource "aws_cloudfront_distribution" "samornbo-com" {
   }
 }
 
-# tflint-ignore: terraform_naming_convention
-resource "aws_cloudfront_origin_access_control" "samornbo-com" {
+resource "aws_cloudfront_origin_access_control" "samornbo_com" {
   # Bug in Terraform https://github.com/hashicorp/terraform-provider-aws/issues/15102
   # name                              = aws_s3_bucket.samornbo-com.bucket_regional_domain_name
   name                              = "samornbo.com.s3.us-east-1.amazonaws.com"

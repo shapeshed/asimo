@@ -9,8 +9,8 @@ resource "aws_route53_record" "shapeshed_com_A" {
   type    = "A"
   alias {
     evaluate_target_health = false
-    name                   = aws_cloudfront_distribution.cf-shapeshed-com.domain_name
-    zone_id                = aws_cloudfront_distribution.cf-shapeshed-com.hosted_zone_id
+    name                   = aws_cloudfront_distribution.shapeshed_com.domain_name
+    zone_id                = aws_cloudfront_distribution.shapeshed_com.hosted_zone_id
   }
 }
 
@@ -49,8 +49,8 @@ resource "aws_route53_record" "shapeshed_com_AAAA" {
   type    = "AAAA"
   alias {
     evaluate_target_health = false
-    name                   = aws_cloudfront_distribution.cf-shapeshed-com.domain_name
-    zone_id                = aws_cloudfront_distribution.cf-shapeshed-com.hosted_zone_id
+    name                   = aws_cloudfront_distribution.shapeshed_com.domain_name
+    zone_id                = aws_cloudfront_distribution.shapeshed_com.hosted_zone_id
   }
 }
 
@@ -235,8 +235,8 @@ resource "aws_route53_record" "samornbo-com_A" {
   type    = "A"
   alias {
     evaluate_target_health = false
-    name                   = aws_cloudfront_distribution.samornbo-com.domain_name
-    zone_id                = aws_cloudfront_distribution.samornbo-com.hosted_zone_id
+    name                   = aws_cloudfront_distribution.samornbo_com.domain_name
+    zone_id                = aws_cloudfront_distribution.samornbo_com.hosted_zone_id
   }
 }
 
@@ -247,7 +247,7 @@ resource "aws_route53_record" "samornbo-com_AAAA" {
   type    = "AAAA"
   alias {
     evaluate_target_health = false
-    name                   = aws_cloudfront_distribution.samornbo-com.domain_name
-    zone_id                = aws_cloudfront_distribution.samornbo-com.hosted_zone_id
+    name                   = aws_cloudfront_distribution.samornbo_com.domain_name
+    zone_id                = aws_cloudfront_distribution.samornbo_com.hosted_zone_id
   }
 }
