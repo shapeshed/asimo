@@ -64,7 +64,7 @@ resource "aws_cloudfront_distribution" "shapeshed_com" {
   }
 
   viewer_certificate {
-    acm_certificate_arn            = aws_acm_certificate.cert-shapeshed-com.arn
+    acm_certificate_arn            = aws_acm_certificate.shapeshed_com.arn
     cloudfront_default_certificate = false
     minimum_protocol_version       = "TLSv1.2_2021"
     ssl_support_method             = "sni-only"
@@ -150,7 +150,7 @@ resource "aws_cloudfront_distribution" "samornbo_com" {
   }
 
   viewer_certificate {
-    acm_certificate_arn            = aws_acm_certificate.samornbo-com.arn
+    acm_certificate_arn            = aws_acm_certificate.samornbo_com.arn
     cloudfront_default_certificate = false
     minimum_protocol_version       = "TLSv1.2_2021"
     ssl_support_method             = "sni-only"
