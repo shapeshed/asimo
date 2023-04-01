@@ -150,7 +150,7 @@ resource "aws_route53_record" "__dmarc_shapeshed_com_TXT" {
   name    = "_dmarc.shapeshed.com"
   type    = "TXT"
   records = [
-    "v=DMARC1;p=quarantine;rua=mailto:155f2ac846@rua.easydmarc.eu;ruf=mailto:155f2ac846@ruf.easydmarc.eu;aspf=s;adkim=s;fo=1"
+    "v=DMARC1;p=quarantine;pct=100;rua=mailto:155f2ac846@rua.easydmarc.eu;ruf=mailto:155f2ac846@ruf.easydmarc.eu;ri=86400;aspf=s;adkim=s;fo=1"
   ]
   ttl = 60
 }
