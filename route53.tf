@@ -62,17 +62,6 @@ resource "aws_route53_record" "moxie_shapeshed_com_aaaa" {
 }
 
 # tflint-ignore: terraform_naming_convention
-resource "aws_route53_record" "d78e316caf6d1de59613b2e5a7e0d62b_shapeshed_com_CNAME" {
-  zone_id = aws_route53_zone.shapeshed_com.zone_id
-  name    = "d78e316caf6d1de59613b2e5a7e0d62b.shapeshed.com"
-  type    = "CNAME"
-  ttl     = 86400
-  records = [
-    "verify.bing.com.",
-  ]
-}
-
-# tflint-ignore: terraform_naming_convention
 resource "aws_route53_record" "googlee87068e8125fba47_shapeshed_com_CNAME" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "googlee87068e8125fba47.shapeshed.com"
@@ -80,17 +69,6 @@ resource "aws_route53_record" "googlee87068e8125fba47_shapeshed_com_CNAME" {
   ttl     = 86400
   records = [
     "GOOGLE.com.",
-  ]
-}
-
-# tflint-ignore: terraform_naming_convention
-resource "aws_route53_record" "shgsbo4u9t_shapeshed_com_CNAME" {
-  zone_id = aws_route53_zone.shapeshed_com.zone_id
-  name    = "shgsbo4u9t.shapeshed.com"
-  type    = "CNAME"
-  ttl     = 86400
-  records = [
-    "zz.baidu.com.",
   ]
 }
 
@@ -151,28 +129,6 @@ resource "aws_route53_record" "shapeshed_com_TXT" {
   records = [
     "google-site-verification=VH4lMZXngyYKnvq-OftIaK7k83_HILU9XDozv4WppzU",
     "v=spf1 include:_spf.google.com -all",
-  ]
-  ttl = 86400
-}
-
-# tflint-ignore: terraform_naming_convention
-resource "aws_route53_record" "__acme-challenge_shapeshed_com_TXT" {
-  zone_id = aws_route53_zone.shapeshed_com.zone_id
-  name    = "_acme-challenge.shapeshed.com"
-  type    = "TXT"
-  records = [
-    "A-uhrILL2l86Qe3D3ItXlWbWoqTQdjTmN0FgC7w-uuU"
-  ]
-  ttl = 60
-}
-
-# tflint-ignore: terraform_naming_convention
-resource "aws_route53_record" "yandex-verification_shapeshed_com_TXT" {
-  zone_id = aws_route53_zone.shapeshed_com.zone_id
-  name    = "yandex-verification.shapeshed.com"
-  type    = "TXT"
-  records = [
-    "5dc1b233ee950ba7"
   ]
   ttl = 86400
 }
