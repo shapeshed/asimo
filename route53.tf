@@ -14,8 +14,7 @@ resource "aws_route53_record" "shapeshed_com_A" {
   }
 }
 
-# tflint-ignore: terraform_naming_convention
-resource "aws_route53_record" "moxie_shapeshed_com_A" {
+resource "aws_route53_record" "moxie_shapeshed_com_a" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "moxie.shapeshed.com"
   type    = "A"
