@@ -2,8 +2,7 @@ resource "aws_route53_zone" "shapeshed_com" {
   name = "shapeshed.com"
 }
 
-# tflint-ignore: terraform_naming_convention
-resource "aws_route53_record" "shapeshed_com_A" {
+resource "aws_route53_record" "shapeshed_com_a" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = aws_route53_zone.shapeshed_com.name
   type    = "A"
@@ -41,8 +40,7 @@ resource "aws_route53_record" "shapeshed_com_acm_validation" {
   zone_id         = aws_route53_zone.shapeshed_com.zone_id
 }
 
-# tflint-ignore: terraform_naming_convention
-resource "aws_route53_record" "shapeshed_com_AAAA" {
+resource "aws_route53_record" "shapeshed_com_aaaa" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = aws_route53_zone.shapeshed_com.name
   type    = "AAAA"
@@ -53,8 +51,7 @@ resource "aws_route53_record" "shapeshed_com_AAAA" {
   }
 }
 
-# tflint-ignore: terraform_naming_convention
-resource "aws_route53_record" "moxie_shapeshed_com_AAAA" {
+resource "aws_route53_record" "moxie_shapeshed_com_aaaa" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "moxie.shapeshed.com"
   type    = "AAAA"
@@ -108,8 +105,7 @@ resource "aws_route53_record" "w6yzyrt6eyqt_shapeshed_com_CNAME" {
   ]
 }
 
-# tflint-ignore: terraform_naming_convention
-resource "aws_route53_record" "shapeshed_com_MX" {
+resource "aws_route53_record" "shapeshed_com_mx" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = aws_route53_zone.shapeshed_com.name
   type    = "MX"
@@ -123,8 +119,7 @@ resource "aws_route53_record" "shapeshed_com_MX" {
   ttl = 60
 }
 
-# tflint-ignore: terraform_naming_convention
-resource "aws_route53_record" "shapeshed_com_NS" {
+resource "aws_route53_record" "shapeshed_com_ns" {
   name    = aws_route53_zone.shapeshed_com.name
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   type    = "NS"
@@ -138,7 +133,7 @@ resource "aws_route53_record" "shapeshed_com_NS" {
 }
 
 # tflint-ignore: terraform_naming_convention
-resource "aws_route53_record" "shapeshed_com_SOA" {
+resource "aws_route53_record" "shapeshed_com_soa" {
   name    = aws_route53_zone.shapeshed_com.name
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   type    = "SOA"
