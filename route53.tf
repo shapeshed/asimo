@@ -128,7 +128,7 @@ resource "aws_route53_record" "shapeshed_com_TXT" {
   type    = "TXT"
   records = [
     "google-site-verification=VH4lMZXngyYKnvq-OftIaK7k83_HILU9XDozv4WppzU",
-    "v=spf1 include:_spf.google.com -all",
+    "v=spf1 include:_spf.google.com include:amazonses.com -all",
   ]
   ttl = 86400
 }
