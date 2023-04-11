@@ -155,6 +155,15 @@ resource "aws_route53_record" "__dmarc_shapeshed_com_TXT" {
   ttl = 60
 }
 
+resource "aws_route53_record" "shapeshed_com_amazonses_dkim_record" {
+  count   = 3
+  zone_id = aws_route53_zone.shapeshed_com.zone_id
+  name    = "${aws_ses_domain_dkim.shapeshed_com.dkim_tokens[count.index]}._domainkey"
+  type    = "CNAME"
+  ttl     = "600"
+  records = ["${aws_ses_domain_dkim.shapeshed_com.dkim_tokens[count.index]}.dkim.amazonses.com"]
+}
+
 # tflint-ignore: terraform_naming_convention
 resource "aws_route53_zone" "samornbo-com" {
   name = "samornbo.com"
