@@ -164,6 +164,26 @@ resource "aws_route53_record" "shapeshed_com_amazonses_dkim_record" {
   records = ["${aws_ses_domain_dkim.shapeshed_com.dkim_tokens[count.index]}.dkim.amazonses.com"]
 }
 
+resource "aws_route53_record" "smtp_tls_shapeshed_com_txt" {
+  zone_id = aws_route53_zone.shapeshed_com.zone_id
+  name    = "_smtp._tls.shapeshed.com"
+  type    = "TXT"
+  records = [
+    "v=TLSRPTv1;rua=mailto:smtp-tls-reports@shapeshed.com;"
+  ]
+  ttl = 300
+}
+
+resource "aws_route53_record" "mta_sts_shapeshed_com_txt" {
+  zone_id = aws_route53_zone.shapeshed_com.zone_id
+  name    = "_mta-sts.shapeshed.com"
+  type    = "TXT"
+  records = [
+    "v=STSv1;id=1681810094392;"
+  ]
+  ttl = 300
+}
+
 # tflint-ignore: terraform_naming_convention
 resource "aws_route53_zone" "samornbo-com" {
   name = "samornbo.com"
