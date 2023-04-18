@@ -218,7 +218,7 @@ resource "aws_cloudfront_distribution" "mta_sts_shapeshed_com" {
     connection_attempts      = 3
     connection_timeout       = 10
     domain_name              = aws_s3_bucket.mta_sts_shapeshed_com.bucket_regional_domain_name
-    origin_access_control_id = aws_cloudfront_origin_access_control.static_shapeshed_com.id
+    origin_access_control_id = aws_cloudfront_origin_access_control.mta_sts_shapeshed_com.id
     origin_id                = aws_s3_bucket.mta_sts_shapeshed_com.bucket_regional_domain_name
   }
 
