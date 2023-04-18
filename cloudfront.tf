@@ -22,6 +22,8 @@ resource "aws_cloudfront_distribution" "shapeshed_com" {
   }
 
   default_cache_behavior {
+    # AWS Managed Policy
+    response_headers_policy_id = "67f7725c-6f97-4210-82d7-5512b31e9d03"
     allowed_methods = [
       "GET",
       "HEAD",
@@ -102,6 +104,8 @@ resource "aws_cloudfront_distribution" "samornbo_com" {
   }
 
   default_cache_behavior {
+    # AWS Managed Policy
+    response_headers_policy_id = "67f7725c-6f97-4210-82d7-5512b31e9d03"
     allowed_methods = [
       "GET",
       "HEAD",
