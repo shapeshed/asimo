@@ -164,3 +164,34 @@ resource "aws_s3_bucket_acl" "samornbo-com" {
   bucket   = aws_s3_bucket.samornbo-com.id
   acl      = "private"
 }
+
+# tfsec:ignore:aws-s3-enable-bucket-encryption
+# tfsec:ignore:aws-s3-enable-bucket-logging
+# tfsec:ignore:aws-s3-encryption-customer-key
+# tfsec:ignore:aws-s3-enable-versioning
+resource "aws_s3_bucket" "mta_sts_shapeshed_com" {
+  bucket = "mta-sts.shapeshed.com"
+}
+
+resource "aws_s3_bucket_public_access_block" "mta_sts_shapeshed_com" {
+  bucket = aws_s3_bucket.mta_sts_shapeshed_com.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+# tfsec:ignore:aws-s3-enable-versioning 
+resource "aws_s3_bucket_versioning" "mta_sts_shapeshed_com" {
+  bucket = aws_s3_bucket.mta_sts_shapeshed_com.id
+  versioning_configuration {
+    status = "Suspended"
+  }
+}
+
+# tflint-ignore: terraform_naming_convention
+resource "aws_s3_bucket_acl" "mta_sts_shapeshed_com" {
+  bucket = aws_s3_bucket.mta_sts_shapeshed_com.id
+  acl    = "private"
+}
