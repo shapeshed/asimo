@@ -191,7 +191,7 @@ resource "aws_s3_bucket_versioning" "mta_sts_shapeshed_com" {
 }
 
 # tflint-ignore: terraform_naming_convention
-resource "aws_s3_bucket_acl" "static-shapeshed-com" {
+resource "aws_s3_bucket_acl" "mta_sts_shapeshed_com" {
   bucket = aws_s3_bucket.mta_sts_shapeshed_com.id
   acl    = "private"
 }
