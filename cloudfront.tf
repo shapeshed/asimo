@@ -18,7 +18,8 @@ resource "aws_cloudfront_distribution" "shapeshed_com" {
   custom_error_response {
     error_caching_min_ttl = 10
     error_code            = 404
-    response_code         = 0
+    response_code         = 404
+    response_page_path    = "/404.html"
   }
 
   default_cache_behavior {
@@ -46,8 +47,13 @@ resource "aws_cloudfront_distribution" "shapeshed_com" {
 
     function_association {
       event_type   = "viewer-request"
-      function_arn = "arn:aws:cloudfront::535487841971:function/naked-domain"
+      function_arn = "arn:aws:cloudfront::535487841971:function/shapeshed-redirects"
     }
+  }
+
+  logging_config {
+    bucket          = "shapeshed.com-robots.txt.s3.amazonaws.com"
+    include_cookies = false
   }
 
   origin {

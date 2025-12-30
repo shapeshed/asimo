@@ -107,6 +107,7 @@ resource "aws_route53_record" "shapeshed_com_TXT" {
   name    = aws_route53_zone.shapeshed_com.name
   type    = "TXT"
   records = [
+    "yandex-verification: 38e7aea0c9e5f8c4",
     "google-site-verification=VH4lMZXngyYKnvq-OftIaK7k83_HILU9XDozv4WppzU",
     "v=spf1 include:_spf.google.com include:amazonses.com -all",
   ]

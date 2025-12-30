@@ -33,8 +33,6 @@ No modules.
 | [aws_cloudfront_origin_access_control.static_shapeshed_com](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_origin_access_control) | resource |
 | [aws_route53_record.__dmarc_shapeshed_com_TXT](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.googlee87068e8125fba47_shapeshed_com_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
-| [aws_route53_record.moxie_shapeshed_com_a](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
-| [aws_route53_record.moxie_shapeshed_com_aaaa](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.mta_sts_shapeshed_com_a](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.mta_sts_shapeshed_com_aaaa](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.mta_sts_shapeshed_com_txt](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
@@ -86,7 +84,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS region | `string` | `"eu-west-1"` | no |
-| <a name="input_us_east_1_buckets"></a> [us\_east\_1\_buckets](#input\_us\_east\_1\_buckets) | Buckets in the us-east-1 region | `list(string)` | <pre>[<br>  "com.shapeshed.bomberg",<br>  "com.shapeshed.cdn",<br>  "com.shapeshed.clearmatics",<br>  "com.shapeshed.auster",<br>  "com.shapeshed.orwell",<br>  "com.shapeshed.wozniak"<br>]</pre> | no |
+| <a name="input_us_east_1_buckets"></a> [us\_east\_1\_buckets](#input\_us\_east\_1\_buckets) | Buckets in the us-east-1 region | `list(string)` | <pre>[<br/>  "com.shapeshed.bomberg",<br/>  "com.shapeshed.cdn",<br/>  "com.shapeshed.clearmatics",<br/>  "com.shapeshed.auster",<br/>  "com.shapeshed.orwell",<br/>  "com.shapeshed.wozniak"<br/>]</pre> | no |
 
 ## Outputs
 
