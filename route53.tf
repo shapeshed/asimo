@@ -13,16 +13,6 @@ resource "aws_route53_record" "shapeshed_com_a" {
   }
 }
 
-resource "aws_route53_record" "moxie_shapeshed_com_a" {
-  zone_id = aws_route53_zone.shapeshed_com.zone_id
-  name    = "moxie.shapeshed.com"
-  type    = "A"
-  records = [
-    "173.255.248.188",
-  ]
-  ttl = 86400
-}
-
 resource "aws_route53_record" "shapeshed_com_acm_validation" {
   for_each = {
     for dvo in aws_acm_certificate.shapeshed_com.domain_validation_options : dvo.domain_name => {
@@ -49,16 +39,6 @@ resource "aws_route53_record" "shapeshed_com_aaaa" {
     name                   = aws_cloudfront_distribution.shapeshed_com.domain_name
     zone_id                = aws_cloudfront_distribution.shapeshed_com.hosted_zone_id
   }
-}
-
-resource "aws_route53_record" "moxie_shapeshed_com_aaaa" {
-  zone_id = aws_route53_zone.shapeshed_com.zone_id
-  name    = "moxie.shapeshed.com"
-  type    = "AAAA"
-  records = [
-    "2600:3c01::f03c:91ff:fe93:30f8",
-  ]
-  ttl = 86400
 }
 
 # tflint-ignore: terraform_naming_convention
