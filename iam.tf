@@ -1,9 +1,5 @@
-resource "aws_iam_openid_connect_provider" "github_actions" {
-  url            = "https://token.actions.githubusercontent.com"
-  client_id_list = ["sts.amazonaws.com"]
-  # AWS validates GitHub OIDC via root CA; thumbprint is required by the provider
-  # but not used for verification against well-known issuers.
-  thumbprint_list = ["1c58a3a8518e8759bf075b76b750d4f2df264fcd"]
+data "aws_iam_openid_connect_provider" "github_actions" {
+  url = "https://token.actions.githubusercontent.com"
 }
 
 data "aws_iam_policy_document" "aerial_registry_github_actions_assume" {
@@ -13,7 +9,7 @@ data "aws_iam_policy_document" "aerial_registry_github_actions_assume" {
 
     principals {
       type        = "Federated"
-      identifiers = [aws_iam_openid_connect_provider.github_actions.arn]
+      identifiers = [data.aws_iam_openid_connect_provider.github_actions.arn]
     }
 
     condition {
