@@ -1,5 +1,89 @@
-# tfsec:ignore:aws-cloudfront-enable-waf 
-# tfsec:ignore:aws-cloudfront-enable-logging 
+# tfsec:ignore:aws-cloudfront-enable-waf
+# tfsec:ignore:aws-cloudfront-enable-logging
+resource "aws_cloudfront_distribution" "aerial_shapeshed_com" {
+  aliases             = ["aerial.shapeshed.com"]
+  enabled             = true
+  http_version        = "http2and3"
+  is_ipv6_enabled     = true
+  price_class         = "PriceClass_All"
+  retain_on_delete    = false
+  tags                = {}
+  tags_all            = {}
+  wait_for_deployment = true
+
+  default_cache_behavior {
+    # AWS Managed Policy - SecurityHeadersPolicy
+    response_headers_policy_id = "67f7725c-6f97-4210-82d7-5512b31e9d03"
+    allowed_methods            = ["GET", "HEAD"]
+    # AWS Managed Policy - CachingOptimized
+    cache_policy_id        = "658327ea-f89d-4fab-a63d-7e88639e58f6"
+    cached_methods         = ["GET", "HEAD"]
+    compress               = true
+    default_ttl            = 0
+    max_ttl                = 0
+    min_ttl                = 0
+    smooth_streaming       = false
+    target_origin_id       = aws_s3_bucket.aerial-shapeshed-com.bucket_regional_domain_name
+    trusted_key_groups     = []
+    trusted_signers        = []
+    viewer_protocol_policy = "redirect-to-https"
+  }
+
+  origin {
+    connection_attempts      = 3
+    connection_timeout       = 10
+    domain_name              = aws_s3_bucket.aerial-shapeshed-com.bucket_regional_domain_name
+    origin_access_control_id = aws_cloudfront_origin_access_control.aerial_shapeshed_com.id
+    origin_id                = aws_s3_bucket.aerial-shapeshed-com.bucket_regional_domain_name
+  }
+
+  restrictions {
+    geo_restriction {
+      locations        = []
+      restriction_type = "none"
+    }
+  }
+
+  viewer_certificate {
+    acm_certificate_arn            = aws_acm_certificate.shapeshed_com.arn
+    cloudfront_default_certificate = false
+    minimum_protocol_version       = "TLSv1.2_2021"
+    ssl_support_method             = "sni-only"
+  }
+}
+
+resource "aws_cloudfront_origin_access_control" "aerial_shapeshed_com" {
+  name                              = aws_s3_bucket.aerial-shapeshed-com.bucket_regional_domain_name
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+}
+
+resource "aws_s3_bucket_policy" "aerial_shapeshed_com" {
+  bucket = aws_s3_bucket.aerial-shapeshed-com.id
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid    = "AllowCloudFrontServicePrincipal"
+        Effect = "Allow"
+        Principal = {
+          Service = "cloudfront.amazonaws.com"
+        }
+        Action   = "s3:GetObject"
+        Resource = "${aws_s3_bucket.aerial-shapeshed-com.arn}/*"
+        Condition = {
+          StringEquals = {
+            "AWS:SourceArn" = aws_cloudfront_distribution.aerial_shapeshed_com.arn
+          }
+        }
+      }
+    ]
+  })
+}
+
+# tfsec:ignore:aws-cloudfront-enable-waf
+# tfsec:ignore:aws-cloudfront-enable-logging
 resource "aws_cloudfront_distribution" "shapeshed_com" {
   aliases = [
     "shapeshed.com",

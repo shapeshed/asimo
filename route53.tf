@@ -212,6 +212,28 @@ resource "aws_route53_record" "samornbo-com_AAAA" {
   }
 }
 
+resource "aws_route53_record" "aerial_shapeshed_com_a" {
+  zone_id = aws_route53_zone.shapeshed_com.zone_id
+  name    = "aerial.shapeshed.com"
+  type    = "A"
+  alias {
+    evaluate_target_health = false
+    name                   = aws_cloudfront_distribution.aerial_shapeshed_com.domain_name
+    zone_id                = aws_cloudfront_distribution.aerial_shapeshed_com.hosted_zone_id
+  }
+}
+
+resource "aws_route53_record" "aerial_shapeshed_com_aaaa" {
+  zone_id = aws_route53_zone.shapeshed_com.zone_id
+  name    = "aerial.shapeshed.com"
+  type    = "AAAA"
+  alias {
+    evaluate_target_health = false
+    name                   = aws_cloudfront_distribution.aerial_shapeshed_com.domain_name
+    zone_id                = aws_cloudfront_distribution.aerial_shapeshed_com.hosted_zone_id
+  }
+}
+
 resource "aws_route53_record" "mta_sts_shapeshed_com_a" {
   zone_id = aws_route53_zone.shapeshed_com.zone_id
   name    = "mta-sts.shapeshed.com"

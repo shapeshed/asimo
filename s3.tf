@@ -167,6 +167,46 @@ resource "aws_s3_bucket_acl" "samornbo-com" {
 
 # tfsec:ignore:aws-s3-enable-bucket-encryption
 # tfsec:ignore:aws-s3-enable-bucket-logging
+# tfsec:ignore:aws-s3-encryption-customer-key tflint-ignore: terraform_naming_convention
+resource "aws_s3_bucket" "aerial-shapeshed-com" {
+  bucket = "aerial.shapeshed.com"
+}
+
+# tflint-ignore: terraform_naming_convention
+resource "aws_s3_bucket_public_access_block" "aerial-shapeshed-com" {
+  bucket = aws_s3_bucket.aerial-shapeshed-com.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+# tfsec:ignore:aws-s3-enable-versioning tflint-ignore: terraform_naming_convention
+resource "aws_s3_bucket_versioning" "aerial-shapeshed-com" {
+  bucket = aws_s3_bucket.aerial-shapeshed-com.id
+  versioning_configuration {
+    status = "Suspended"
+  }
+}
+
+# tflint-ignore: terraform_naming_convention
+resource "aws_s3_bucket_ownership_controls" "aerial-shapeshed-com" {
+  bucket = aws_s3_bucket.aerial-shapeshed-com.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
+
+# tflint-ignore: terraform_naming_convention
+resource "aws_s3_bucket_acl" "aerial-shapeshed-com" {
+  depends_on = [aws_s3_bucket_ownership_controls.aerial-shapeshed-com]
+  bucket     = aws_s3_bucket.aerial-shapeshed-com.id
+  acl        = "private"
+}
+
+# tfsec:ignore:aws-s3-enable-bucket-encryption
+# tfsec:ignore:aws-s3-enable-bucket-logging
 # tfsec:ignore:aws-s3-encryption-customer-key
 # tfsec:ignore:aws-s3-enable-versioning
 resource "aws_s3_bucket" "mta_sts_shapeshed_com" {
