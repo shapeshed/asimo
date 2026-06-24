@@ -52,6 +52,3 @@ resource "aws_iam_role_policy" "aerial_registry_github_actions" {
   })
 }
 
-output "aerial_registry_role_arn" {
-  value = aws_iam_role.aerial_registry_github_actions.arn
-}
